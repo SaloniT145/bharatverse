@@ -3,7 +3,8 @@
 
 {% block content %}
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-content hero-copy">
+    <p class="hero-kicker"><span class="kicker-dot"></span> A living history adventure</p>
     <h1 class="hero-title">BHARAT<span class="accent">VERSE</span></h1>
     <p class="hero-tagline">PLAY &bull; EXPLORE &bull; DISCOVER</p>
     <p class="hero-desc">
@@ -14,7 +15,24 @@
       <a href="{{ url_for('auth.register') }}" class="btn btn-primary">⏳ Enter the Time Machine</a>
       <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Explore Realms</a>
     </div>
+    <div class="hero-stat-line"><span>8 playable missions</span><span>•</span><span>1,000+ years of stories</span></div>
   </div>
+  <div class="history-window" aria-label="Historical view of the ancient city of Mohenjo-daro">
+    <div class="history-image history-image-main">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mohenjo-daro.jpg" alt="The ancient city of Mohenjo-daro" loading="eager">
+    </div>
+    <div class="history-caption"><span class="caption-pin">✦</span><span><strong>Indus Valley</strong><small>Mohenjo-daro, c. 2500 BCE</small></span></div>
+    <span class="orbit-token token-one">𓂀</span>
+    <span class="orbit-token token-two">✦</span>
+    <span class="orbit-token token-three">𓆣</span>
+  </div>
+</section>
+
+<section class="culture-ribbon" aria-label="Indus Valley history and culture highlights">
+  <div class="culture-intro"><span class="section-kicker">The Harappan world</span><h2>Cities, symbols, craft &amp; water.</h2><p>Explore the evidence left by one of South Asia's earliest urban civilizations.</p></div>
+  <figure class="culture-tile"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dholavira1.JPG" alt="Ancient water reservoir at Dholavira" loading="lazy"><figcaption>Water engineering</figcaption></figure>
+  <figure class="culture-tile"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Harappan_small_figures.jpg" alt="Small Harappan clay figures and toys" loading="lazy"><figcaption>Clay &amp; craft</figcaption></figure>
+  <figure class="culture-tile"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/IndusValleySeals.JPG" alt="Indus Valley stamp seals and impressions" loading="lazy"><figcaption>Seals &amp; symbols</figcaption></figure>
 </section>
 
 <section class="section how-it-works">
