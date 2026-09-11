@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% block title %}{{ realm['name'] }} — Levels{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/levels.css') }}">{% endblock %}
 
 {% block content %}
 <section class="levels-page">
-  <h1 class="page-title">{{ realm['icon'] }} {{ realm['name'] }}</h1>
-  <p class="page-subtitle">{{ realm['period'] }}</p>
+  <div class="levels-heading">
+    <div>
+      <p class="map-kicker">THE HARAPPAN EXPEDITION</p>
+      <h1 class="page-title">{{ realm['icon'] }} {{ realm['name'] }}</h1>
+      <p class="page-subtitle">{{ realm['period'] }} · Choose your next civic milestone</p>
+    </div>
+    <div class="map-legend" aria-label="Level status legend">
+      <span><i class="legend-dot completed"></i>Completed</span>
+      <span><i class="legend-dot unlocked"></i>Available</span>
+      <span><i class="legend-dot locked"></i>Locked</span>
+    </div>
+  </div>
 
   {% if realm_completed %}
   <div class="realm-complete-banner">
@@ -16,27 +27,36 @@
   </div>
   {% endif %}
 
-  <div class="journey-path">
+  <div class="harappan-map" aria-label="Interactive Harappan civilization level map">
+    <div class="map-compass" aria-hidden="true">N</div>
+    <div class="map-waterway" aria-hidden="true"></div>
+    <svg class="map-route" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M95 390 C170 300 205 210 285 245 S380 400 465 330 S565 170 655 220 S760 390 895 125" />
+    </svg>
     {% for item in journey %}
-    <div class="journey-node {{ item['status'] }}">
-      <div class="journey-marker">
-        {% if item['status'] == 'completed' %}✓{% elif item['status'] == 'unlocked' %}🔓{% else %}🔒{% endif %}
-      </div>
-      <div class="journey-card">
-        <span class="journey-level-num">LEVEL {{ item['level']['level_number'] }}</span>
-        <h3>{{ item['level']['title'] }}</h3>
-        <p>{{ item['level']['scenario'] }}</p>
-        {% if item['status'] == 'completed' %}
-          <a href="{{ url_for('game.historical_record', level_id=item['level']['id']) }}" class="btn btn-secondary btn-small">✓ Completed — View Record</a>
-        {% elif item['status'] == 'unlocked' %}
-          <a href="{{ url_for('game.play_level', level_id=item['level']['id']) }}" class="btn btn-primary btn-small">Play Level</a>
-        {% else %}
-          <button class="btn btn-disabled btn-small" disabled>🔒 Locked</button>
-        {% endif %}
-      </div>
-    </div>
-    {% if not loop.last %}<div class="journey-connector"></div>{% endif %}
+    {% set date_label = 'Early Harappan · c. 3300 BCE' if item['level']['level_number'] <= 2 else ('Mature Harappan · c. 2600–1900 BCE' if item['level']['level_number'] <= 6 else 'Late Harappan · c. 1900–1300 BCE') %}
+    <article class="map-level {{ item['status'] }} level-{{ item['level']['level_number'] }}">
+      <button class="map-pin" type="button" aria-label="View Level {{ item['level']['level_number'] }}: {{ item['level']['title'] }}"
+              data-level="Level {{ item['level']['level_number'] }}"
+              data-title="{{ item['level']['title'] }}"
+              data-scenario="{{ item['level']['scenario'] }}"
+              data-status="{{ item['status'] }}"
+              data-date="{{ date_label }}"
+              data-description="{{ item['level']['description'] }}"
+              data-action-url="{% if item['status'] == 'completed' %}{{ url_for('game.historical_record', level_id=item['level']['id']) }}{% elif item['status'] == 'unlocked' %}{{ url_for('game.play_level', level_id=item['level']['id']) }}{% endif %}">
+        <span class="pin-icon">{% if item['status'] == 'completed' %}✓{% elif item['status'] == 'unlocked' %}✦{% else %}⌁{% endif %}</span>
+        <span class="pin-label">{{ item['level']['level_number'] }}</span>
+      </button>
+      <div class="map-landmark" aria-hidden="true">{{ '𓂀' if item['level']['level_number'] % 2 else '◆' }}</div>
+      <span class="map-level-name">{{ item['level']['title'] }}</span>
+    </article>
     {% endfor %}
+    <div class="map-date date-early"><strong>c. 3300 BCE</strong><span>Early Harappan</span></div>
+    <div class="map-date date-mature"><strong>c. 2600–1900 BCE</strong><span>Mature Harappan</span></div>
+    <div class="map-date date-late"><strong>c. 1900–1300 BCE</strong><span>Late Harappan</span></div>
+    <div class="map-note">Follow the river. Each landmark reveals a new chapter in city-building.</div>
   </div>
 </section>
 {% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/levels.js') }}"></script>{% endblock %}
