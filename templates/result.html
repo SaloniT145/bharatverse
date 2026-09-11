@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Decision Made — BharatVerse{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">{% endblock %}
+
+{% block content %}
+<section class="result-screen">
+  <h1 class="result-title">✅ DECISION MADE</h1>
+
+  <div class="result-choice-box">
+    <p class="result-label">Your choice:</p>
+    <p class="result-choice-text">{{ choice['choice_text'] }}</p>
+    <p class="result-consequence">{{ choice['consequence_message'] }}</p>
+  </div>
+
+  <div class="effects-grid">
+    {% for key, value in effects.items() %}
+      <div class="effect-chip {{ 'positive' if value >= 0 else 'negative' }}">
+        {{ '+' if value >= 0 else '' }}{{ value }} {{ key|capitalize }}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="result-stats-grid">
+    <div class="result-stat"><span>🏛️</span><strong data-count="{{ civilization_score }}">0</strong><small>{{ score_label }}</small></div>
+    <div class="result-stat"><span>📚</span><strong>+{{ xp_reward }} XP</strong><small>Total: {{ new_xp_total }}</small></div>
+    <div class="result-stat"><span>🎖️</span><strong>{{ rank }}</strong><small>Current Rank</small></div>
+  </div>
+
+  {% if treasure_msg %}
+  <div class="reward-popup treasure-popup">
+    <h3>🏺 {{ treasure_msg['title'] }}</h3>
+    <p class="reward-icon">{{ treasure_msg['icon'] }}</p>
+    <p class="reward-name">{{ treasure_msg['name'] }}</p>
+    <p class="reward-desc">{{ treasure_msg['description'] }}</p>
+  </div>
+  {% endif %}
+
+  {% if achievement_msg %}
+  <div class="reward-popup achievement-popup">
+    <h3>🏆 {{ achievement_msg['title'] }}</h3>
+    <p class="reward-icon">{{ achievement_msg['icon'] }}</p>
+    <p class="reward-name">{{ achievement_msg['name'] }}</p>
+    <p class="reward-desc">{{ achievement_msg['description'] }}</p>
+  </div>
+  {% endif %}
+
+  {% if next_level %}
+  <div class="unlock-banner">🔓 LEVEL {{ next_level['level_number'] }} UNLOCKED: {{ next_level['title'] }}</div>
+  {% endif %}
+
+  {% if realm_completed %}
+  <div class="unlock-banner realm-banner">🎉 REALM COMPLETE! Civilization Map &amp; Timeline unlocked.</div>
+  {% endif %}
+
+  <div class="result-actions">
+    <a href="{{ url_for('game.historical_record', level_id=level['id']) }}" class="btn btn-primary btn-large">📜 View Historical Record</a>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/game.js') }}"></script>{% endblock %}

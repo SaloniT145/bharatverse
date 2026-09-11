@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}BharatVerse — Play. Explore. Discover.{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">BHARAT<span class="accent">VERSE</span></h1>
+    <p class="hero-tagline">PLAY &bull; EXPLORE &bull; DISCOVER</p>
+    <p class="hero-desc">
+      Travel through time. Make history-changing decisions.<br>
+      Discover the real story behind India's great civilizations.
+    </p>
+    <div class="hero-buttons">
+      <a href="{{ url_for('auth.register') }}" class="btn btn-primary">⏳ Enter the Time Machine</a>
+      <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Explore Realms</a>
+    </div>
+  </div>
+</section>
+
+<section class="section how-it-works">
+  <h2 class="section-title">How It Works</h2>
+  <div class="steps-grid">
+    <div class="step-card"><span class="step-num">1</span><h3>Travel</h3><p>Step into the Time Machine and choose a historical era.</p></div>
+    <div class="step-card"><span class="step-num">2</span><h3>Play</h3><p>Enter a real historical situation as a city planner and leader.</p></div>
+    <div class="step-card"><span class="step-num">3</span><h3>Decide</h3><p>Make meaningful decisions with limited resources.</p></div>
+    <div class="step-card"><span class="step-num">4</span><h3>Discover</h3><p>Uncover the real historical record behind your choices.</p></div>
+    <div class="step-card"><span class="step-num">5</span><h3>Unlock</h3><p>Earn XP, treasures, achievements, and unlock new levels.</p></div>
+  </div>
+</section>
+
+<section class="section why-bharatverse">
+  <h2 class="section-title">Why BharatVerse?</h2>
+  <div class="feature-grid">
+    <div class="feature-card">🎮 <h4>Game-First Learning</h4><p>We don't ask you to study before you play — you play first, and discover history along the way.</p></div>
+    <div class="feature-card">🧭 <h4>Decision-Based Gameplay</h4><p>Every choice has real consequences that shape your civilization's stats.</p></div>
+    <div class="feature-card">🇮🇳 <h4>Indian History &amp; Culture</h4><p>Explore civilizations, kingdoms, trade routes, heritage, and traditional games.</p></div>
+    <div class="feature-card">🔓 <h4>Progressive Levels</h4><p>Unlock new challenges as you complete each stage of your journey.</p></div>
+    <div class="feature-card">🗺️ <h4>Civilization Maps</h4><p>Explore real archaeological sites on an interactive map.</p></div>
+    <div class="feature-card">📅 <h4>Historical Timelines</h4><p>Discover the real chronology behind each civilization.</p></div>
+    <div class="feature-card">🏆 <h4>Hall of Legends</h4><p>Compete with fellow explorers on the leaderboard.</p></div>
+    <div class="feature-card">📜 <h4>Real Historical Records</h4><p>Every decision is followed by credible historical context.</p></div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <h2>Ready to travel back in time?</h2>
+  <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-large">Start Your Journey</a>
+</section>
+{% endblock %}

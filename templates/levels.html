@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ realm['name'] }} — Levels{% endblock %}
+
+{% block content %}
+<section class="levels-page">
+  <h1 class="page-title">{{ realm['icon'] }} {{ realm['name'] }}</h1>
+  <p class="page-subtitle">{{ realm['period'] }}</p>
+
+  {% if realm_completed %}
+  <div class="realm-complete-banner">
+    🎉 You have completed this realm! The Civilization Map and Historical Timeline are unlocked.
+    <div class="banner-links">
+      <a href="{{ url_for('map.civilization_map', realm_key=realm['key']) }}" class="btn btn-secondary">🗺️ View Map</a>
+      <a href="{{ url_for('timeline.historical_timeline', realm_key=realm['key']) }}" class="btn btn-secondary">📅 View Timeline</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="journey-path">
+    {% for item in journey %}
+    <div class="journey-node {{ item['status'] }}">
+      <div class="journey-marker">
+        {% if item['status'] == 'completed' %}✓{% elif item['status'] == 'unlocked' %}🔓{% else %}🔒{% endif %}
+      </div>
+      <div class="journey-card">
+        <span class="journey-level-num">LEVEL {{ item['level']['level_number'] }}</span>
+        <h3>{{ item['level']['title'] }}</h3>
+        <p>{{ item['level']['scenario'] }}</p>
+        {% if item['status'] == 'completed' %}
+          <a href="{{ url_for('game.historical_record', level_id=item['level']['id']) }}" class="btn btn-secondary btn-small">✓ Completed — View Record</a>
+        {% elif item['status'] == 'unlocked' %}
+          <a href="{{ url_for('game.play_level', level_id=item['level']['id']) }}" class="btn btn-primary btn-small">Play Level</a>
+        {% else %}
+          <button class="btn btn-disabled btn-small" disabled>🔒 Locked</button>
+        {% endif %}
+      </div>
+    </div>
+    {% if not loop.last %}<div class="journey-connector"></div>{% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

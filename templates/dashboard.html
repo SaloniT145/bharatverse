@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — BharatVerse{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+  <div class="dashboard-header">
+    <h1>Welcome, {{ user['username'] }} 👋</h1>
+    <p class="rank-badge">{{ rank }}</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><span class="stat-icon">📚</span><span class="stat-value" data-count="{{ stats['knowledge_xp'] if stats else 0 }}">0</span><span class="stat-label">Knowledge XP</span></div>
+    <div class="stat-card"><span class="stat-icon">🏛️</span><span class="stat-value" data-count="{{ score }}">0</span><span class="stat-label">Civilization Score</span></div>
+    <div class="stat-card"><span class="stat-icon">💧</span><span class="stat-value" data-count="{{ stats['water'] if stats else 0 }}">0</span><span class="stat-label">Water Mgmt</span></div>
+    <div class="stat-card"><span class="stat-icon">🌾</span><span class="stat-value" data-count="{{ stats['food'] if stats else 0 }}">0</span><span class="stat-label">Food Security</span></div>
+    <div class="stat-card"><span class="stat-icon">🏠</span><span class="stat-value" data-count="{{ stats['settlement'] if stats else 0 }}">0</span><span class="stat-label">Settlement</span></div>
+    <div class="stat-card"><span class="stat-icon">🛣️</span><span class="stat-value" data-count="{{ stats['infrastructure'] if stats else 0 }}">0</span><span class="stat-label">Infrastructure</span></div>
+    <div class="stat-card"><span class="stat-icon">❤️</span><span class="stat-value" data-count="{{ stats['wellbeing'] if stats else 0 }}">0</span><span class="stat-label">Wellbeing</span></div>
+  </div>
+
+  <div class="progress-block">
+    <div class="progress-label"><span>Overall Progress</span><span>{{ overall_progress }}%</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width: {{ overall_progress }}%;"></div></div>
+  </div>
+
+  <div class="dashboard-actions">
+    <a href="{{ url_for('realms.time_machine') }}" class="action-card">⏳<span>Enter Time Machine</span></a>
+    <a href="{{ url_for('realms.level_selection', realm_key='indus_valley') }}" class="action-card">🏺<span>Continue Journey</span></a>
+    <a href="{{ url_for('map.civilization_map', realm_key='indus_valley') }}" class="action-card">🗺️<span>Civilization Map</span></a>
+    <a href="{{ url_for('timeline.historical_timeline', realm_key='indus_valley') }}" class="action-card">📅<span>Timeline</span></a>
+    <a href="{{ url_for('leaderboard.hall_of_legends') }}" class="action-card">🏆<span>Hall of Legends</span></a>
+  </div>
+
+  <div class="dashboard-columns">
+    <div class="dashboard-col">
+      <h3>🗺️ Your Realms</h3>
+      <div class="mini-realm-list">
+        {% for realm in realms %}
+        <div class="mini-realm-card {{ 'locked' if realm['status'] != 'active' }}">
+          <span class="mini-realm-icon">{{ realm['icon'] }}</span>
+          <div class="mini-realm-info">
+            <strong>{{ realm['name'] }}</strong>
+            {% if realm['status'] == 'active' %}
+              <div class="progress-bar small"><div class="progress-fill" style="width: {{ realm_progress[realm['id']] }}%;"></div></div>
+              <span class="mini-progress-text">{{ realm_progress[realm['id']] }}% complete</span>
+            {% else %}
+              <span class="locked-tag">🔒 Coming Soon</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="dashboard-col">
+      <h3>🏆 Achievements ({{ achievements|length }})</h3>
+      <div class="badge-list">
+        {% for a in achievements %}
+          <div class="badge-item" title="{{ a['description'] }}"><span>{{ a['icon'] }}</span>{{ a['name'] }}</div>
+        {% else %}
+          <p class="empty-hint">No achievements yet — complete a level to earn your first badge!</p>
+        {% endfor %}
+      </div>
+
+      <h3>🏺 Treasures ({{ treasures|length }})</h3>
+      <div class="badge-list">
+        {% for t in treasures %}
+          <div class="badge-item" title="{{ t['description'] }}"><span>{{ t['icon'] }}</span>{{ t['name'] }}</div>
+        {% else %}
+          <p class="empty-hint">No treasures discovered yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

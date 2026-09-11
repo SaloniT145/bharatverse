@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Time Machine — BharatVerse{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/time_machine.css') }}">{% endblock %}
+
+{% block content %}
+<section class="time-machine-page">
+  <div class="tm-console" id="tmConsole">
+    <h1 class="tm-title">⏳ BHARATVERSE TIME MACHINE</h1>
+    <p class="tm-status" id="tmStatus">SYSTEM READY</p>
+
+    <div class="tm-destination-card">
+      <p class="tm-label">Select Destination</p>
+      <div class="tm-destination">
+        <span class="tm-dest-icon">{{ realm['icon'] }}</span>
+        <div>
+          <h2>{{ realm['name'] }}</h2>
+          <p class="tm-period">Historical Period: {{ realm['period'] }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button id="initiateBtn" class="btn btn-primary btn-large tm-button" data-url="{{ url_for('realms.level_selection', realm_key=realm['key']) }}">
+      INITIATE TIME TRAVEL
+    </button>
+
+    <div class="tm-loading" id="tmLoading" hidden>
+      <div class="tm-spinner"></div>
+      <p id="tmLoadingText">TIME TRAVEL INITIATED...</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/time_machine.js') }}"></script>{% endblock %}

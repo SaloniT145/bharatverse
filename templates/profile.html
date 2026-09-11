@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Profile — {{ user['username'] }}{% endblock %}
+
+{% block content %}
+<section class="profile-page">
+  <div class="profile-header">
+    <div class="profile-avatar">🧑‍🎓</div>
+    <h1>{{ user['username'] }}</h1>
+    <p class="rank-badge">{{ rank }}</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><span class="stat-icon">📚</span><span class="stat-value">{{ stats['knowledge_xp'] if stats else 0 }}</span><span class="stat-label">Knowledge XP</span></div>
+    <div class="stat-card"><span class="stat-icon">🏛️</span><span class="stat-value">{{ score }}</span><span class="stat-label">Civilization Score</span></div>
+    <div class="stat-card"><span class="stat-icon">💧</span><span class="stat-value">{{ stats['water'] if stats else 0 }}</span><span class="stat-label">Water Mgmt</span></div>
+    <div class="stat-card"><span class="stat-icon">🌾</span><span class="stat-value">{{ stats['food'] if stats else 0 }}</span><span class="stat-label">Food Security</span></div>
+  </div>
+
+  <h3>🏆 Achievements</h3>
+  <div class="badge-list">
+    {% for a in achievements %}
+      <div class="badge-item" title="{{ a['description'] }}"><span>{{ a['icon'] }}</span>{{ a['name'] }}</div>
+    {% else %}
+      <p class="empty-hint">No achievements yet.</p>
+    {% endfor %}
+  </div>
+
+  <h3>🏺 Treasures</h3>
+  <div class="badge-list">
+    {% for t in treasures %}
+      <div class="badge-item" title="{{ t['description'] }}"><span>{{ t['icon'] }}</span>{{ t['name'] }}</div>
+    {% else %}
+      <p class="empty-hint">No treasures yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

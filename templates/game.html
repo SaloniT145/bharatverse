@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Level {{ level['level_number'] }}: {{ level['title'] }} — BharatVerse{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">{% endblock %}
+
+{% block content %}
+<section class="game-screen">
+  <div class="game-header">
+    <span class="level-badge">LEVEL {{ level['level_number'] }}</span>
+    <h1>{{ level['title'] }}</h1>
+    <p class="game-scenario-title">{{ level['scenario'] }}</p>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-chip">💧 <span>{{ stats['water'] if stats else 0 }}</span></div>
+    <div class="stat-chip">🌾 <span>{{ stats['food'] if stats else 0 }}</span></div>
+    <div class="stat-chip">🏠 <span>{{ stats['settlement'] if stats else 0 }}</span></div>
+    <div class="stat-chip">🛣️ <span>{{ stats['infrastructure'] if stats else 0 }}</span></div>
+    <div class="stat-chip">❤️ <span>{{ stats['wellbeing'] if stats else 0 }}</span></div>
+    <div class="stat-chip highlight">🏛️ <span>{{ civilization_score }}</span></div>
+  </div>
+
+  <div class="scenario-box">
+    <p>{{ level['description'] }}</p>
+    <p class="resources-line"><strong>Available Resources:</strong> {{ level['resources'] }}</p>
+  </div>
+
+  {% if already_completed %}
+  <div class="already-completed-notice">
+    You already completed this level.
+    <a href="{{ url_for('game.historical_record', level_id=level['id']) }}">View its Historical Record →</a>
+  </div>
+  {% endif %}
+
+  <form method="POST" action="{{ url_for('game.submit_choice', level_id=level['id']) }}" id="choiceForm">
+    <div class="choice-grid">
+      {% for choice in choices %}
+      <label class="choice-card">
+        <input type="radio" name="choice_id" value="{{ choice['id'] }}" required>
+        <span class="choice-text">{{ choice['choice_text'] }}</span>
+      </label>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary btn-large" id="submitChoiceBtn">Make Your Decision</button>
+  </form>
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/game.js') }}"></script>{% endblock %}

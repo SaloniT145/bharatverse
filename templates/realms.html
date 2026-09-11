@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Realms — BharatVerse{% endblock %}
+
+{% block content %}
+<section class="realms-page">
+  <h1 class="page-title">Choose Your Historical Realm</h1>
+  <p class="page-subtitle">Five worlds of Indian history and culture await. More realms unlock as BharatVerse grows.</p>
+
+  <div class="realm-grid">
+    {% for realm in realms %}
+    <div class="realm-card {{ 'locked' if realm['status'] != 'active' }}">
+      <div class="realm-icon">{{ realm['icon'] }}</div>
+      <h3>{{ realm['name'] }}</h3>
+      <p class="realm-period">{{ realm['period'] }}</p>
+      <p class="realm-desc">{{ realm['description'] }}</p>
+
+      {% if realm['status'] == 'active' %}
+        <div class="progress-bar small"><div class="progress-fill" style="width: {{ realm_progress[realm['id']] }}%;"></div></div>
+        <span class="mini-progress-text">{{ realm_progress[realm['id']] }}% complete</span>
+        <a href="{{ url_for('realms.level_selection', realm_key=realm['key']) }}" class="btn btn-primary btn-full">Play Now</a>
+      {% else %}
+        <span class="locked-tag">🔒 Locked / Coming Soon</span>
+        <button class="btn btn-disabled btn-full" disabled>Coming Soon</button>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

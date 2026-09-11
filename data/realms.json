@@ -1,0 +1,135 @@
+{
+  "realms": [
+    {
+      "key": "indus_valley",
+      "name": "Indus Valley Civilization",
+      "icon": "\ud83c\udffa",
+      "description": "Become a city planner in one of the world's earliest urban civilizations.",
+      "period": "c. 2600-1900 BCE",
+      "status": "active",
+      "order_index": 1
+    },
+    {
+      "key": "ancient_kingdoms",
+      "name": "Ancient Kingdoms",
+      "icon": "\ud83d\udc51",
+      "description": "Lead great Indian kingdoms through politics, war, and diplomacy.",
+      "period": "Coming Soon",
+      "status": "locked",
+      "order_index": 2
+    },
+    {
+      "key": "trade_exploration",
+      "name": "Trade & Exploration",
+      "icon": "\ud83e\udded",
+      "description": "Sail ancient trade routes and build economic networks.",
+      "period": "Coming Soon",
+      "status": "locked",
+      "order_index": 3
+    },
+    {
+      "key": "architecture_heritage",
+      "name": "Architecture & Heritage",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "description": "Design and construct India's iconic monuments and heritage sites.",
+      "period": "Coming Soon",
+      "status": "locked",
+      "order_index": 4
+    },
+    {
+      "key": "traditional_games",
+      "name": "Traditional Games",
+      "icon": "\ud83c\udfb2",
+      "description": "Discover and play India's traditional games and toys.",
+      "period": "Coming Soon",
+      "status": "locked",
+      "order_index": 5
+    }
+  ],
+  "civilization_sites": [
+    {
+      "realm_key": "indus_valley",
+      "name": "Harappa",
+      "region": "Punjab region (present-day Pakistan)",
+      "importance": "One of the first major Indus sites excavated; gave the civilization one of its common names.",
+      "fact": "Excavations here revealed granary-like structures and extensive craft workshop remains.",
+      "x": 45, "y": 30
+    },
+    {
+      "realm_key": "indus_valley",
+      "name": "Mohenjo-daro",
+      "region": "Sindh region (present-day Pakistan)",
+      "importance": "Known for extensive planned streets, a large public bath structure, and advanced drainage.",
+      "fact": "The 'Great Bath' is one of the earliest known public water structures in the ancient world.",
+      "x": 35, "y": 45
+    },
+    {
+      "realm_key": "indus_valley",
+      "name": "Dholavira",
+      "region": "Gujarat, India",
+      "importance": "Notable for sophisticated water conservation systems, including large reservoirs.",
+      "fact": "The site is recognized as a UNESCO World Heritage Site for its unique water engineering.",
+      "x": 40, "y": 65
+    },
+    {
+      "realm_key": "indus_valley",
+      "name": "Lothal",
+      "region": "Gujarat, India",
+      "importance": "Believed by many archaeologists to have featured an early dockyard connected to trade.",
+      "fact": "Beads, seals, and tools found here point to a thriving craft and trade economy.",
+      "x": 42, "y": 68
+    },
+    {
+      "realm_key": "indus_valley",
+      "name": "Kalibangan",
+      "region": "Rajasthan, India",
+      "importance": "Evidence here includes early ploughed field patterns and fire altars of interest to researchers.",
+      "fact": "Kalibangan means 'black bangles', named after bangle fragments found across the site.",
+      "x": 50, "y": 50
+    }
+  ],
+  "timeline_events": [
+    {
+      "realm_key": "indus_valley",
+      "period": "c. 3300 BCE",
+      "event": "Early urban development",
+      "explanation": "Early farming and village communities in the region gradually develop toward more organized settlements.",
+      "order_index": 1
+    },
+    {
+      "realm_key": "indus_valley",
+      "period": "c. 2600-1900 BCE",
+      "event": "Mature Harappan period",
+      "explanation": "Major cities such as Harappa, Mohenjo-daro, and Dholavira reach their most developed, planned urban form.",
+      "order_index": 2
+    },
+    {
+      "realm_key": "indus_valley",
+      "period": "c. 1900 BCE onward",
+      "event": "Transformation of urban centers",
+      "explanation": "Many mature urban settlements gradually transform; scholars debate the roles of climate change, river shifts, and other factors.",
+      "order_index": 3
+    },
+    {
+      "realm_key": "indus_valley",
+      "period": "Later periods",
+      "event": "Regional cultural continuity",
+      "explanation": "Aspects of craft, trade practices, and settlement patterns continue in transformed regional cultures across the subcontinent.",
+      "order_index": 4
+    }
+  ],
+  "treasures": [
+    {"key": "harappan_pottery", "name": "Harappan Pottery", "icon": "\ud83c\udffa", "description": "A virtual historical collectible inspired by painted pottery styles found at Indus sites."},
+    {"key": "ancient_coin", "name": "Ancient Coin", "icon": "\ud83e\udd47", "description": "A virtual collectible inspired by early trade tokens and standardized weights used in exchange."},
+    {"key": "ancient_seal", "name": "Historical Seal", "icon": "\ud83d\udd31", "description": "A virtual collectible inspired by the carved seals used for trade and administration."},
+    {"key": "ancient_manuscript", "name": "Ancient Manuscript", "icon": "\ud83d\udcdc", "description": "A virtual collectible representing the still-undeciphered Indus script found on seals and pottery."},
+    {"key": "archaeological_artifact", "name": "Archaeological Artifact", "icon": "\ud83d\udc8e", "description": "A virtual collectible inspired by artifacts recovered from Indus excavation sites."}
+  ],
+  "achievements": [
+    {"key": "history_explorer", "name": "History Explorer", "icon": "\ud83c\udf96\ufe0f", "description": "Completed your first level.", "criteria": "Complete 1 level"},
+    {"key": "master_of_water", "name": "Master of Water", "icon": "\ud83d\udca7", "description": "Mastered water management challenges.", "criteria": "Complete the Water & Wells level"},
+    {"key": "city_planner", "name": "City Planner", "icon": "\ud83c\udfd9\ufe0f", "description": "Successfully secured food supply for your city.", "criteria": "Complete the Granaries level"},
+    {"key": "civilization_explorer", "name": "Civilization Explorer", "icon": "\ud83d\uddfa\ufe0f", "description": "Built strong trade networks.", "criteria": "Complete the Trade level"},
+    {"key": "harappan_master", "name": "Harappan Master", "icon": "\ud83c\udfc6", "description": "Completed the entire Indus Valley realm.", "criteria": "Complete all 8 levels"}
+  ]
+}

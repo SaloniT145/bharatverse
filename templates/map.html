@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Civilization Map — {{ realm['name'] }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">{% endblock %}
+
+{% block content %}
+<section class="map-page">
+  <h1 class="page-title">🗺️ Civilization Map</h1>
+  <p class="page-subtitle">{{ realm['name'] }} &middot; Click a marker to learn about a real archaeological site.</p>
+
+  <div class="map-container">
+    <svg viewBox="0 0 100 100" class="map-svg" id="mapSvg">
+      <rect x="0" y="0" width="100" height="100" fill="var(--map-bg, #f0e6d2)" rx="2"/>
+      {% for site in sites %}
+      <g class="map-marker" data-name="{{ site['name'] }}" data-region="{{ site['region'] }}"
+         data-importance="{{ site['importance'] }}" data-fact="{{ site['fact'] }}"
+         transform="translate({{ site['x'] }},{{ site['y'] }})">
+        <circle r="2.5" class="marker-dot"></circle>
+        <text x="0" y="-3.5" class="marker-label">{{ site['name'] }}</text>
+      </g>
+      {% endfor %}
+    </svg>
+  </div>
+
+  <div class="site-panel" id="sitePanel" hidden>
+    <h3 id="siteName"></h3>
+    <p><strong>Region:</strong> <span id="siteRegion"></span></p>
+    <p><strong>Importance:</strong> <span id="siteImportance"></span></p>
+    <p><strong>Interesting Fact:</strong> <span id="siteFact"></span></p>
+  </div>
+
+  <p class="map-note">Note: locations are shown as stylized approximate markers for educational purposes, not exact geographic boundaries.</p>
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/map.js') }}"></script>{% endblock %}

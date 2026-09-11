@@ -1,0 +1,247 @@
+{
+  "realm_key": "indus_valley",
+  "realm_name": "Indus Valley Civilization",
+  "period": "c. 2600-1900 BCE",
+  "levels": [
+    {
+      "level_number": 1,
+      "title": "Settlement Planning",
+      "scenario": "The Founding of Your Settlement",
+      "description": "You are a young settlement planner beside a great river. Before anything else is built, you must decide how the settlement will be laid out.",
+      "resources": "Land, river access, a small group of settlers, basic tools",
+      "xp_reward": 100,
+      "treasure_key": "harappan_pottery",
+      "achievement_key": "history_explorer",
+      "choices": [
+        {
+          "text": "Plan a grid-like layout with straight streets from the start",
+          "effects": {"settlement": 15, "infrastructure": 15, "wellbeing": 5},
+          "consequence": "Your settlement grows in an organized grid. Movement and future construction become easier."
+        },
+        {
+          "text": "Let the settlement grow organically near the riverbank",
+          "effects": {"settlement": 5, "water": 10, "wellbeing": 10},
+          "consequence": "Settlers stay close to water, but the layout becomes irregular and harder to expand later."
+        },
+        {
+          "text": "Focus first on defensive boundaries around the settlement",
+          "effects": {"infrastructure": 10, "wellbeing": 15, "settlement": 0},
+          "consequence": "Settlers feel safer, but valuable early time is spent on walls instead of homes."
+        }
+      ],
+      "historical_context": "Indus Valley cities such as Mohenjo-daro and Harappa are widely noted by archaeologists for their grid-like street planning, with roads often meeting at right angles.",
+      "key_learning": "Urban planning was already a mature practice in South Asia thousands of years ago, long before many other early urban centers.",
+      "source": "Archaeological Survey of India; NCERT History textbooks"
+    },
+    {
+      "level_number": 2,
+      "title": "Housing & Population",
+      "scenario": "Homes for a Growing Population",
+      "description": "More families are arriving. You must decide how housing should be built as the population grows.",
+      "resources": "Baked bricks, mudbricks, timber, limited skilled labor",
+      "xp_reward": 100,
+      "treasure_key": "ancient_seal",
+      "achievement_key": null,
+      "choices": [
+        {
+          "text": "Build uniform brick houses along planned streets",
+          "effects": {"settlement": 15, "infrastructure": 10, "wellbeing": 5},
+          "consequence": "Housing is efficient and consistent, supporting steady population growth."
+        },
+        {
+          "text": "Allow wealthier families to build larger courtyard houses first",
+          "effects": {"settlement": 10, "wellbeing": -5, "infrastructure": 5},
+          "consequence": "Some families are well housed quickly, but inequality in living space becomes visible."
+        },
+        {
+          "text": "Prioritize small, quick shelters for everyone equally",
+          "effects": {"settlement": 5, "wellbeing": 15, "infrastructure": 0},
+          "consequence": "Everyone has a roof over their head, but space is cramped and future expansion is harder."
+        }
+      ],
+      "historical_context": "Excavations show many Indus houses used standardized baked bricks with a consistent ratio, and dwellings often included private wells and bathing areas.",
+      "key_learning": "Brick standardization across distant Indus sites suggests shared building knowledge or some form of coordination.",
+      "source": "Archaeological Survey of India; peer-reviewed South Asian archaeology journals"
+    },
+    {
+      "level_number": 3,
+      "title": "Water & Wells",
+      "scenario": "The Water Challenge",
+      "description": "Your settlement is growing and water demand is increasing. You must decide how to manage water resources.",
+      "resources": "River access, labor for digging, baked-brick lining materials",
+      "xp_reward": 100,
+      "treasure_key": "ancient_coin",
+      "achievement_key": "master_of_water",
+      "choices": [
+        {
+          "text": "Build multiple public wells across the settlement",
+          "effects": {"water": 20, "wellbeing": 10, "infrastructure": 5},
+          "consequence": "Water becomes easily accessible to most households, improving daily life."
+        },
+        {
+          "text": "Build a large reservoir to store water for dry seasons",
+          "effects": {"water": 15, "food": 10, "infrastructure": 5},
+          "consequence": "Your settlement is more resilient to seasonal shortages, though it took longer to build."
+        },
+        {
+          "text": "Rely mainly on the river and expand housing instead",
+          "effects": {"settlement": 10, "water": -5, "wellbeing": -5},
+          "consequence": "Housing grows faster, but families further from the river struggle for water."
+        }
+      ],
+      "historical_context": "Indus Valley sites such as Mohenjo-daro are known for numerous wells, and Dholavira is especially noted for elaborate water reservoirs and channels.",
+      "key_learning": "Sophisticated water management was central to Indus urban life, especially in regions with seasonal rainfall.",
+      "source": "Archaeological Survey of India; UNESCO documentation on Dholavira"
+    },
+    {
+      "level_number": 4,
+      "title": "Drainage & Sanitation",
+      "scenario": "Managing Waste and Sanitation",
+      "description": "As the settlement grows, waste and dirty water need somewhere to go. What should you prioritize?",
+      "resources": "Baked bricks, covered drain materials, skilled labor",
+      "xp_reward": 125,
+      "treasure_key": "ancient_manuscript",
+      "achievement_key": null,
+      "choices": [
+        {
+          "text": "Build covered drains connecting houses to the main street drains",
+          "effects": {"wellbeing": 20, "infrastructure": 15, "water": 5},
+          "consequence": "Waste water flows away from homes efficiently, greatly improving public health."
+        },
+        {
+          "text": "Build simple open drains only along main roads",
+          "effects": {"wellbeing": 5, "infrastructure": 10},
+          "consequence": "Main roads stay cleaner, but many homes still deal with standing water nearby."
+        },
+        {
+          "text": "Postpone drainage and focus on granary construction instead",
+          "effects": {"food": 15, "wellbeing": -10},
+          "consequence": "Food storage improves, but sanitation problems begin affecting settlers' health."
+        }
+      ],
+      "historical_context": "The Indus Civilization is widely recognized for advanced drainage systems, with covered drains running along streets and connecting to individual houses in many excavated cities.",
+      "key_learning": "This level of sanitation infrastructure was rare among ancient urban civilizations of the same period.",
+      "source": "NCERT History textbooks; Archaeological Survey of India"
+    },
+    {
+      "level_number": 5,
+      "title": "Granaries & Food Security",
+      "scenario": "Securing the Food Supply",
+      "description": "A good harvest has come in. You must decide how to store and manage surplus food for the settlement's future.",
+      "resources": "Harvested grain, raised platforms, labor for construction",
+      "xp_reward": 125,
+      "treasure_key": "archaeological_artifact",
+      "achievement_key": "city_planner",
+      "choices": [
+        {
+          "text": "Build a large central granary on a raised platform",
+          "effects": {"food": 20, "infrastructure": 10, "wellbeing": 5},
+          "consequence": "Grain stays dry and protected, giving the settlement a strong buffer against bad seasons."
+        },
+        {
+          "text": "Distribute smaller storage pits across different neighborhoods",
+          "effects": {"food": 10, "wellbeing": 10, "settlement": 5},
+          "consequence": "Families have closer access to stored food, though overall storage capacity is smaller."
+        },
+        {
+          "text": "Trade the surplus grain immediately for tools and materials",
+          "effects": {"infrastructure": 15, "food": -5},
+          "consequence": "You gain useful materials now, but the settlement has less of a food reserve for lean months."
+        }
+      ],
+      "historical_context": "Large brick platforms interpreted by many archaeologists as granaries have been found at sites such as Harappa and Mohenjo-daro, suggesting organized storage of agricultural surplus.",
+      "key_learning": "Food storage and redistribution likely supported specialization, allowing some residents to work as artisans and traders rather than farmers.",
+      "source": "Archaeological Survey of India; academic South Asian archaeology sources"
+    },
+    {
+      "level_number": 6,
+      "title": "Roads & Infrastructure",
+      "scenario": "Connecting the City",
+      "description": "The settlement is now a small city. Roads need to connect neighborhoods, markets, and the river efficiently.",
+      "resources": "Compacted earth, brick paving, skilled planners",
+      "xp_reward": 150,
+      "treasure_key": "ancient_coin",
+      "achievement_key": null,
+      "choices": [
+        {
+          "text": "Build wide main roads with smaller lanes branching off",
+          "effects": {"infrastructure": 20, "settlement": 10, "wellbeing": 5},
+          "consequence": "Movement of goods and people becomes efficient across the whole city."
+        },
+        {
+          "text": "Focus roads mainly around the marketplace and river access",
+          "effects": {"infrastructure": 10, "food": 10, "water": 5},
+          "consequence": "Trade and water access improve, but distant neighborhoods remain harder to reach."
+        },
+        {
+          "text": "Keep roads minimal and prioritize more housing space instead",
+          "effects": {"settlement": 15, "infrastructure": -5},
+          "consequence": "More families are housed, but congestion and access problems begin to appear."
+        }
+      ],
+      "historical_context": "Streets in Indus cities were often laid out in a grid, oriented along cardinal directions, with wider main streets and narrower lanes connecting to them.",
+      "key_learning": "A well-planned road network is a strong indicator of centralized planning and long-term civic thinking.",
+      "source": "Archaeological Survey of India; NCERT History textbooks"
+    },
+    {
+      "level_number": 7,
+      "title": "Trade & City Management",
+      "scenario": "Building Trade Networks",
+      "description": "Your city has goods to offer. You must decide how to manage trade with distant settlements and regions.",
+      "resources": "Craft goods, standardized weights, seals for trade records",
+      "xp_reward": 150,
+      "treasure_key": "harappan_pottery",
+      "achievement_key": "civilization_explorer",
+      "choices": [
+        {
+          "text": "Establish standardized weights and measures for trade",
+          "effects": {"infrastructure": 15, "food": 10, "wellbeing": 5},
+          "consequence": "Trade becomes fair and predictable, attracting more distant trading partners."
+        },
+        {
+          "text": "Focus on trading directly with nearby settlements only",
+          "effects": {"food": 10, "settlement": 5},
+          "consequence": "Trade is steady but limited, with fewer new goods and ideas reaching your city."
+        },
+        {
+          "text": "Send traders on long-distance routes toward distant regions",
+          "effects": {"infrastructure": 10, "wellbeing": -5, "food": 5},
+          "consequence": "Exotic goods and materials begin arriving, though the journeys are risky and costly."
+        }
+      ],
+      "historical_context": "Standardized weights, seals, and evidence of goods such as carnelian beads and materials from distant regions suggest the Indus Civilization took part in extensive trade networks, including possible contact with Mesopotamia.",
+      "key_learning": "Trade seals and standardized weights point to organized economic systems rather than random exchange.",
+      "source": "Archaeological Survey of India; academic trade-network studies of the Indus Civilization"
+    },
+    {
+      "level_number": 8,
+      "title": "Final Civilization Challenge",
+      "scenario": "Sustaining the Civilization",
+      "description": "Your city has grown into a thriving center. Now you must decide the long-term priority that will define your civilization's legacy.",
+      "resources": "An established city, accumulated knowledge, a stable population",
+      "xp_reward": 200,
+      "treasure_key": "archaeological_artifact",
+      "achievement_key": "harappan_master",
+      "choices": [
+        {
+          "text": "Invest in maintaining and expanding existing infrastructure",
+          "effects": {"infrastructure": 20, "wellbeing": 15, "settlement": 10},
+          "consequence": "Your city remains stable, resilient, and well-organized for generations."
+        },
+        {
+          "text": "Invest heavily in expanding trade and craft specialization",
+          "effects": {"food": 15, "infrastructure": 10, "wellbeing": 5},
+          "consequence": "Your city becomes a hub of goods and craftsmanship, prospering through exchange."
+        },
+        {
+          "text": "Focus on strengthening water management for long-term resilience",
+          "effects": {"water": 20, "food": 15, "wellbeing": 10},
+          "consequence": "Your civilization becomes remarkably resilient to droughts and seasonal changes."
+        }
+      ],
+      "historical_context": "Scholars generally associate the eventual transformation and decline of many mature Indus urban centers, around 1900 BCE onward, with factors that may include climatic and river-course changes, though the exact causes remain debated among researchers.",
+      "key_learning": "Even highly advanced civilizations can face long-term environmental and social challenges; resilience often depends on adaptability.",
+      "source": "Academic archaeology and paleoclimate studies on the decline of Indus urban centers"
+    }
+  ]
+}

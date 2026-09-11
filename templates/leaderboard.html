@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Hall of Legends — BharatVerse{% endblock %}
+
+{% block content %}
+<section class="leaderboard-page">
+  <h1 class="page-title">🏆 Hall of Legends</h1>
+  <p class="page-subtitle">Entries marked (Demo) are sample data. Real scores come from actual gameplay.</p>
+
+  {% if leaderboard|length >= 3 %}
+  <div class="podium">
+    <div class="podium-place second">
+      <span class="podium-rank">2</span>
+      <span class="podium-name">{{ leaderboard[1]['username'] }}</span>
+      <span class="podium-xp">{{ leaderboard[1]['xp'] }} XP</span>
+    </div>
+    <div class="podium-place first">
+      <span class="podium-rank">1</span>
+      <span class="podium-name">{{ leaderboard[0]['username'] }}</span>
+      <span class="podium-xp">{{ leaderboard[0]['xp'] }} XP</span>
+    </div>
+    <div class="podium-place third">
+      <span class="podium-rank">3</span>
+      <span class="podium-name">{{ leaderboard[2]['username'] }}</span>
+      <span class="podium-xp">{{ leaderboard[2]['xp'] }} XP</span>
+    </div>
+  </div>
+  {% endif %}
+
+  <table class="leaderboard-table">
+    <thead>
+      <tr><th>Rank</th><th>Player</th><th>Knowledge XP</th><th>Civilization Score</th><th>Achievements</th></tr>
+    </thead>
+    <tbody>
+      {% for entry in leaderboard %}
+      <tr>
+        <td>#{{ loop.index }}</td>
+        <td>{{ entry['username'] }} {% if entry['is_demo'] %}<span class="demo-tag">DEMO</span>{% endif %}</td>
+        <td>{{ entry['xp'] }}</td>
+        <td>{{ entry['score'] }}</td>
+        <td>{{ entry['achievement_count'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

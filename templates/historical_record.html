@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Historical Record — {{ level['title'] }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">{% endblock %}
+
+{% block content %}
+<section class="record-screen">
+  <div class="scroll-card">
+    <h1 class="scroll-title">📜 HISTORICAL RECORD</h1>
+    <p class="scroll-level">Level {{ level['level_number'] }}: {{ level['title'] }}</p>
+
+    <div class="scroll-section">
+      <h3>🎮 GAMEPLAY DECISION</h3>
+      <p>
+        {% if chosen_choice %}
+          In your game, you chose: <strong>{{ chosen_choice['choice_text'] }}</strong>
+        {% else %}
+          You made a decision in this level's fictional scenario.
+        {% endif %}
+      </p>
+      <p class="scroll-disclaimer">This is a fictional gameplay event, not a claim about what actually happened historically.</p>
+    </div>
+
+    <div class="scroll-section">
+      <h3>🏺 HISTORICAL CONTEXT</h3>
+      <p>{{ level['historical_context'] }}</p>
+    </div>
+
+    <div class="scroll-section">
+      <h3>💡 KEY LEARNING</h3>
+      <p>{{ level['key_learning'] }}</p>
+    </div>
+
+    <div class="scroll-section source-section">
+      <h3>📚 SOURCE</h3>
+      <p>{{ level['source'] }}</p>
+    </div>
+
+    <div class="scroll-actions">
+      {% if next_level %}
+        <a href="{{ url_for('game.play_level', level_id=next_level['id']) }}" class="btn btn-primary btn-large">Continue Journey →</a>
+      {% else %}
+        <a href="{{ url_for('realms.level_selection', realm_key='indus_valley') }}" class="btn btn-primary btn-large">Back to Journey</a>
+      {% endif %}
+      <a href="{{ url_for('dashboard.dashboard') }}" class="btn btn-secondary">Dashboard</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

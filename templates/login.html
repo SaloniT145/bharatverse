@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login — BharatVerse{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <h2>⏳ Welcome Back, Explorer</h2>
+    <p class="auth-subtitle">Log in to continue your journey through time.</p>
+    <form method="POST" action="{{ url_for('auth.login') }}" class="auth-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required autofocus>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn btn-primary btn-full">Login</button>
+    </form>
+    <p class="auth-switch">New here? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
+  </div>
+</section>
+{% endblock %}
