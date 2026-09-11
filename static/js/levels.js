@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeButton.focus();
   }
 
-  document.querySelectorAll(".map-pin").forEach(function (pin) {
+  document.querySelectorAll(".map-pin, .map-event").forEach(function (pin) {
     pin.addEventListener("click", function () {
       openModal(pin);
     });

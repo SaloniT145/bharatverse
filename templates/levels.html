@@ -29,9 +29,15 @@
 
   <div class="harappan-map" aria-label="Interactive Harappan civilization level map">
     <div class="map-compass" aria-hidden="true">N</div>
-    <div class="map-waterway" aria-hidden="true"></div>
+    <div class="map-waterway" aria-hidden="true">
+      <span class="river-label river-indus">INDUS RIVER</span>
+      <span class="river-label river-ghaggar">GHAGGAR-HAKRA</span>
+    </div>
     <svg class="map-route" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M95 390 C170 300 205 210 285 245 S380 400 465 330 S565 170 655 220 S760 390 895 125" />
+      <path class="river-main" d="M118 485 C145 405 124 325 190 270 S290 170 350 135 S465 95 545 116 S648 208 716 228 S805 185 876 64" />
+      <path class="river-branch" d="M335 138 C300 203 304 274 248 342" />
+      <path class="river-branch" d="M542 116 C585 174 598 230 661 295" />
+      <path class="route-path" d="M95 390 C170 300 205 210 285 245 S380 400 465 330 S565 170 655 220 S760 390 895 125" />
     </svg>
     {% for item in journey %}
     {% set date_label = 'Early Harappan · c. 3300 BCE' if item['level']['level_number'] <= 2 else ('Mature Harappan · c. 2600–1900 BCE' if item['level']['level_number'] <= 6 else 'Late Harappan · c. 1900–1300 BCE') %}
@@ -47,10 +53,18 @@
         <span class="pin-icon">{% if item['status'] == 'completed' %}✓{% elif item['status'] == 'unlocked' %}✦{% else %}⌁{% endif %}</span>
         <span class="pin-label">{{ item['level']['level_number'] }}</span>
       </button>
-      <div class="map-landmark" aria-hidden="true">{{ '𓂀' if item['level']['level_number'] % 2 else '◆' }}</div>
+      <div class="map-landmark" aria-hidden="true">{% if item['level']['level_number'] in [1, 5] %}🏛{% elif item['level']['level_number'] in [3, 6] %}💧{% elif item['level']['level_number'] == 7 %}⚖{% else %}▦{% endif %}</div>
       <span class="map-level-name">{{ item['level']['title'] }}</span>
     </article>
     {% endfor %}
+    <div class="site-label site-harappa">🏛 <strong>Harappa</strong><small>Punjab</small></div>
+    <div class="site-label site-mohenjo">🏛 <strong>Mohenjo-daro</strong><small>Lower Indus</small></div>
+    <div class="site-label site-dholavira">▣ <strong>Dholavira</strong><small>Reservoirs</small></div>
+    <div class="site-label site-lothal">⚓ <strong>Lothal</strong><small>Trade port</small></div>
+    <button class="map-event event-urban" type="button" data-level="Key historical event" data-title="The first cities emerge" data-status="Historical milestone" data-date="c. 3300 BCE · Early Harappan" data-description="Early farming communities grow into planned settlements across the Indus region. Click level landmarks to guide your own settlement.">🌾<span>Urban roots</span></button>
+    <button class="map-event event-mature" type="button" data-level="Key historical event" data-title="The Mature Harappan network" data-status="Historical milestone" data-date="c. 2600–1900 BCE" data-description="Harappa, Mohenjo-daro, Dholavira and other cities share urban planning, craft traditions, weights and long-distance trade.">✦<span>City network</span></button>
+    <button class="map-event event-trade" type="button" data-level="Key historical event" data-title="Trade across the Arabian Sea" data-status="Historical milestone" data-date="c. 2500–1900 BCE" data-description="Standardized weights, seals and port settlements such as Lothal point to organized trade with distant regions, including Mesopotamia.">⚓<span>Trade routes</span></button>
+    <button class="map-event event-late" type="button" data-level="Key historical event" data-title="The Late Harappan transition" data-status="Historical milestone" data-date="c. 1900–1300 BCE" data-description="Urban centers change and populations disperse into new regional traditions. The causes were complex and remain an active area of research.">◌<span>Transition</span></button>
     <div class="map-date date-early"><strong>c. 3300 BCE</strong><span>Early Harappan</span></div>
     <div class="map-date date-mature"><strong>c. 2600–1900 BCE</strong><span>Mature Harappan</span></div>
     <div class="map-date date-late"><strong>c. 1900–1300 BCE</strong><span>Late Harappan</span></div>

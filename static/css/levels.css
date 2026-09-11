@@ -42,11 +42,12 @@
   border: 1px solid #a8753e;
   border-radius: 18px;
   background:
+    radial-gradient(ellipse at 52% 48%, transparent 0 28%, rgba(112, 69, 31, 0.11) 28.2% 28.5%, transparent 28.8%),
     radial-gradient(circle at 18% 22%, rgba(255, 231, 169, 0.55) 0 2px, transparent 3px),
     radial-gradient(circle at 78% 70%, rgba(112, 61, 25, 0.11) 0 1px, transparent 2px),
     linear-gradient(115deg, rgba(117, 62, 29, 0.08) 25%, transparent 25% 50%, rgba(117, 62, 29, 0.06) 50% 75%, transparent 75%),
     #d9b77a;
-  background-size: 90px 90px, 70px 70px, 180px 180px, auto;
+  background-size: auto, 90px 90px, 70px 70px, 180px 180px, auto;
   box-shadow: 0 16px 34px rgba(62, 35, 15, 0.18), inset 0 0 0 8px rgba(255, 228, 166, 0.2);
 }
 
@@ -64,15 +65,13 @@
 
 .map-waterway {
   position: absolute;
-  z-index: -1;
-  width: 105%;
-  height: 170px;
-  left: -3%;
-  top: 45%;
-  opacity: 0.58;
-  background: rgba(54, 125, 128, 0.4);
-  clip-path: polygon(0 48%, 18% 38%, 35% 48%, 52% 30%, 70% 45%, 86% 28%, 100% 35%, 100% 70%, 84% 62%, 68% 76%, 50% 58%, 32% 72%, 15% 58%, 0 68%);
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
+.river-label { position: absolute; color: rgba(27, 93, 96, 0.8); font-size: 0.65rem; font-style: italic; font-weight: 800; letter-spacing: 0.12em; transform: rotate(-28deg); }
+.river-indus { left: 12%; bottom: 13%; }
+.river-ghaggar { left: 22%; top: 43%; transform: rotate(-48deg); }
 
 .map-route {
   position: absolute;
@@ -82,7 +81,10 @@
   height: 100%;
   pointer-events: none;
 }
-.map-route path { fill: none; stroke: rgba(105, 54, 24, 0.68); stroke-width: 3; stroke-dasharray: 10 10; }
+.map-route path { fill: none; }
+.map-route .river-main { stroke: rgba(39, 125, 132, 0.72); stroke-width: 18; }
+.map-route .river-branch { stroke: rgba(65, 145, 143, 0.58); stroke-width: 8; }
+.map-route .route-path { stroke: rgba(105, 54, 24, 0.68); stroke-width: 3; stroke-dasharray: 10 10; }
 .map-compass { position: absolute; top: 20px; right: 24px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(91, 49, 20, 0.5); border-radius: 50%; color: #6b351a; font-family: var(--font-heading); font-weight: 700; }
 
 .map-level { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 132px; text-align: center; }
@@ -96,6 +98,22 @@
 .map-level.locked .map-pin { background: #958b78; color: #e9dfca; filter: grayscale(0.35); }
 .map-landmark { margin-top: -5px; color: #75451f; font-size: 1.45rem; line-height: 1; }
 .map-level-name { margin-top: 3px; color: #4e2c17; font-size: 0.78rem; font-weight: 800; line-height: 1.2; text-shadow: 0 1px rgba(255, 226, 167, 0.5); }
+
+.site-label { position: absolute; z-index: 1; display: flex; flex-direction: column; gap: 1px; color: #5b351c; font-size: 0.75rem; text-shadow: 0 1px rgba(255, 226, 167, 0.8); }
+.site-label strong { font-family: var(--font-heading); }
+.site-label small { padding-left: 19px; color: #7b5732; font-size: 0.62rem; }
+.site-harappa { left: 22%; top: 22%; }
+.site-mohenjo { left: 10%; top: 64%; }
+.site-dholavira { left: 55%; top: 68%; }
+.site-lothal { left: 70%; top: 78%; }
+
+.map-event { position: absolute; z-index: 3; display: flex; align-items: center; gap: 5px; border: 1px solid rgba(99, 52, 21, 0.42); border-radius: 16px; padding: 5px 9px; background: rgba(255, 231, 169, 0.86); color: #5b351c; cursor: pointer; font-size: 0.75rem; font-weight: 800; box-shadow: 0 3px 8px rgba(75, 42, 15, 0.15); transition: transform 0.2s, background 0.2s; }
+.map-event:hover, .map-event:focus-visible { background: #ffe7a9; transform: translateY(-3px); outline: 2px solid var(--gold); outline-offset: 2px; }
+.map-event span { white-space: nowrap; }
+.event-urban { left: 10%; top: 25%; }
+.event-mature { left: 43%; top: 20%; }
+.event-trade { left: 68%; top: 58%; }
+.event-late { right: 4%; top: 34%; }
 
 .level-1 { left: 5%; top: 68%; }
 .level-2 { left: 18%; top: 38%; }
@@ -136,6 +154,14 @@
   .level-7 { left: 76%; top: 54%; }
   .level-8 { left: 68%; top: 13%; }
   .date-mature { left: 38%; top: 7%; }
+  .site-harappa { left: 18%; top: 22%; }
+  .site-mohenjo { left: 5%; top: 65%; }
+  .site-dholavira { left: 48%; top: 70%; }
+  .site-lothal { left: 68%; top: 79%; }
+  .event-urban { left: 4%; top: 31%; }
+  .event-mature { left: 37%; top: 19%; }
+  .event-trade { left: 61%; top: 59%; }
+  .event-late { right: 3%; top: 35%; }
   .map-note { bottom: 16px; text-align: center; }
 }
 
