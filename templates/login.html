@@ -3,7 +3,16 @@
 
 {% block content %}
 <section class="auth-page">
+  <div class="auth-art" aria-label="A glimpse into India's history">
+    <div class="auth-art-image">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dholavira.jpg" alt="The ancient Harappan city of Dholavira" loading="eager">
+    </div>
+    <div class="auth-art-copy"><span>YOUR NEXT CHAPTER</span><strong>Enter the Harappan<br>world.</strong><small>Plan a city, protect its water, shape its future.</small></div>
+    <span class="auth-sticker sticker-one">✦</span>
+    <span class="auth-sticker sticker-two">✺</span>
+  </div>
   <div class="auth-card">
+    <span class="auth-eyebrow">Welcome, time traveler</span>
     <h2>⏳ Welcome Back, Explorer</h2>
     <p class="auth-subtitle">Log in to continue your journey through time.</p>
     <form method="POST" action="{{ url_for('auth.login') }}" class="auth-form">
