@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modalLevel.textContent = pin.dataset.level;
     modalTitle.textContent = pin.dataset.title;
     modalDate.textContent = pin.dataset.date;
-    modalStatus.textContent = status === "completed" ? "Completed" : status === "unlocked" ? "Ready to play" : "Locked · Complete the previous level";
+    modalStatus.textContent = status === "completed" ? "Completed" : status === "unlocked" ? "Ready to play" : status === "Historical milestone" ? "Historical milestone" : "Locked · Complete the previous level";
     modalDescription.textContent = pin.dataset.description;
     modalAction.hidden = !pin.dataset.actionUrl;
     if (pin.dataset.actionUrl) {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeButton.focus();
   }
 
-  document.querySelectorAll(".map-pin, .map-event").forEach(function (pin) {
+  document.querySelectorAll(".map-pin, .map-event, .image-card").forEach(function (pin) {
     pin.addEventListener("click", function () {
       openModal(pin);
     });

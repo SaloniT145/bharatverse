@@ -33,12 +33,43 @@
       <span class="river-label river-indus">INDUS RIVER</span>
       <span class="river-label river-ghaggar">GHAGGAR-HAKRA</span>
     </div>
+    <div class="map-atmosphere" aria-hidden="true">
+      <div class="ancient-sun"></div>
+      <div class="distant-mountains"><i></i><i></i><i></i><i></i></div>
+      <div class="terrain-dune dune-one"></div>
+      <div class="terrain-dune dune-two"></div>
+      <div class="tree grove-one">🌴</div>
+      <div class="tree grove-two">🌴</div>
+      <div class="tree grove-three">🌳</div>
+      <div class="ruin silhouette-one">▥</div>
+      <div class="ruin silhouette-two">▥</div>
+      <div class="time-beacon">✦</div>
+    </div>
+    <div class="traveler-badge"><span>✧</span> TIME TRAVELER'S FIELD MAP <small>INDUS VALLEY · ARCHIVE 01</small></div>
     <svg class="map-route" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
       <path class="river-main" d="M118 485 C145 405 124 325 190 270 S290 170 350 135 S465 95 545 116 S648 208 716 228 S805 185 876 64" />
       <path class="river-branch" d="M335 138 C300 203 304 274 248 342" />
       <path class="river-branch" d="M542 116 C585 174 598 230 661 295" />
       <path class="route-path" d="M95 390 C170 300 205 210 285 245 S380 400 465 330 S565 170 655 220 S760 390 895 125" />
     </svg>
+    <div class="map-image image-bath">
+      <button type="button" class="image-card" data-level="Archaeological site" data-title="The Great Bath of Mohenjo-daro" data-status="Harappan architecture" data-date="c. 2500 BCE" data-description="The Great Bath is one of the best-known structures at Mohenjo-daro, showing the importance of water, brick engineering and public spaces in Mature Harappan cities.">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Great%20Bath%20Mohenjo-daro.jpg" alt="The Great Bath at Mohenjo-daro" loading="lazy">
+        <span>Great Bath · Mohenjo-daro</span>
+      </button>
+    </div>
+    <div class="map-image image-seal">
+      <button type="button" class="image-card" data-level="Archaeological object" data-title="The Pashupati seal" data-status="Harappan iconography" data-date="c. 2500–1900 BCE" data-description="Stamp seals were used across the Indus world. Their animals, symbols and motifs offer clues about identity, trade and belief, although the script remains undeciphered.">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pashupati%20seal.jpg" alt="Indus Valley Pashupati seal" loading="lazy">
+        <span>Seal &amp; script</span>
+      </button>
+    </div>
+    <div class="map-image image-dholavira">
+      <button type="button" class="image-card" data-level="Archaeological site" data-title="Dholavira's water systems" data-status="Harappan engineering" data-date="c. 2600–1900 BCE" data-description="Dholavira in Gujarat is known for reservoirs, channels and carefully planned civic spaces adapted to a dry landscape.">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dholavira%20ruins.jpg" alt="Ruins and reservoirs at Dholavira" loading="lazy">
+        <span>Dholavira · reservoirs</span>
+      </button>
+    </div>
     {% for item in journey %}
     {% set date_label = 'Early Harappan · c. 3300 BCE' if item['level']['level_number'] <= 2 else ('Mature Harappan · c. 2600–1900 BCE' if item['level']['level_number'] <= 6 else 'Late Harappan · c. 1900–1300 BCE') %}
     <article class="map-level {{ item['status'] }} level-{{ item['level']['level_number'] }}">
@@ -68,7 +99,7 @@
     <div class="map-date date-early"><strong>c. 3300 BCE</strong><span>Early Harappan</span></div>
     <div class="map-date date-mature"><strong>c. 2600–1900 BCE</strong><span>Mature Harappan</span></div>
     <div class="map-date date-late"><strong>c. 1900–1300 BCE</strong><span>Late Harappan</span></div>
-    <div class="map-note">Follow the river. Each landmark reveals a new chapter in city-building.</div>
+    <div class="map-note">Follow the river · tap a pin, event, or image to explore the civilization.</div>
   </div>
 </section>
 {% endblock %}
