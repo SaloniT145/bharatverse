@@ -5,18 +5,19 @@
 {% block content %}
 <section class="dashboard">
   <div class="dashboard-header">
-    <h1>Welcome, {{ user['username'] }} 👋</h1>
-    <p class="rank-badge">{{ rank }}</p>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card"><span class="stat-icon">📚</span><span class="stat-value" data-count="{{ stats['knowledge_xp'] if stats else 0 }}">0</span><span class="stat-label">Knowledge XP</span></div>
-    <div class="stat-card"><span class="stat-icon">🏛️</span><span class="stat-value" data-count="{{ score }}">0</span><span class="stat-label">Civilization Score</span></div>
-    <div class="stat-card"><span class="stat-icon">💧</span><span class="stat-value" data-count="{{ stats['water'] if stats else 0 }}">0</span><span class="stat-label">Water Mgmt</span></div>
-    <div class="stat-card"><span class="stat-icon">🌾</span><span class="stat-value" data-count="{{ stats['food'] if stats else 0 }}">0</span><span class="stat-label">Food Security</span></div>
-    <div class="stat-card"><span class="stat-icon">🏠</span><span class="stat-value" data-count="{{ stats['settlement'] if stats else 0 }}">0</span><span class="stat-label">Settlement</span></div>
-    <div class="stat-card"><span class="stat-icon">🛣️</span><span class="stat-value" data-count="{{ stats['infrastructure'] if stats else 0 }}">0</span><span class="stat-label">Infrastructure</span></div>
-    <div class="stat-card"><span class="stat-icon">❤️</span><span class="stat-value" data-count="{{ stats['wellbeing'] if stats else 0 }}">0</span><span class="stat-label">Wellbeing</span></div>
+    <div>
+      <p class="eyebrow">Civilization dashboard</p>
+      <h1>Welcome, {{ user['username'] }} 👋</h1>
+      <p class="rank-badge">{{ rank }}</p>
+    </div>
+    <div class="dashboard-utility" aria-label="Dashboard shortcuts">
+      <div class="utility-stat">
+        <span class="utility-label">Knowledge XP</span>
+        <strong data-count="{{ stats['knowledge_xp'] if stats else 0 }}">0</strong>
+      </div>
+      <a href="{{ url_for('realms.realm_selection') }}" class="utility-link">📦 <span>Resources</span></a>
+      <a href="{{ url_for('map.civilization_map', realm_key='indus_valley') }}" class="utility-link">🗺️ <span>Map</span></a>
+    </div>
   </div>
 
   <div class="progress-block">
@@ -27,9 +28,6 @@
   <div class="dashboard-actions">
     <a href="{{ url_for('realms.time_machine') }}" class="action-card">⏳<span>Enter Time Machine</span></a>
     <a href="{{ url_for('realms.level_selection', realm_key='indus_valley') }}" class="action-card">🏺<span>Continue Journey</span></a>
-    <a href="{{ url_for('map.civilization_map', realm_key='indus_valley') }}" class="action-card">🗺️<span>Civilization Map</span></a>
-    <a href="{{ url_for('timeline.historical_timeline', realm_key='indus_valley') }}" class="action-card">📅<span>Timeline</span></a>
-    <a href="{{ url_for('leaderboard.hall_of_legends') }}" class="action-card">🏆<span>Hall of Legends</span></a>
   </div>
 
   <div class="dashboard-columns">
