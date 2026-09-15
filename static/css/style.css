@@ -142,6 +142,38 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
 .hero-copy .hero-buttons { justify-content: flex-start; }
 .hero-stat-line { display: flex; gap: 12px; margin-top: 22px; color: var(--teal-dark); font-size: 0.82rem; font-weight: 700; }
 
+.realm-map { min-height: 390px; position: relative; overflow: visible; isolation: isolate; border: 10px solid #a8784e; border-radius: 5px; background: radial-gradient(circle at 50% 42%, rgba(255, 231, 169, 0.82), transparent 35%), linear-gradient(135deg, #e5bd7e, #bd895c); box-shadow: 0 18px 30px rgba(101, 63, 66, 0.25), inset 0 0 0 2px rgba(255, 239, 183, 0.65); transform: rotate(2deg); animation: float-window 6s ease-in-out infinite; }
+.realm-map::before { content: ""; position: absolute; inset: 18px; z-index: -1; border: 1px solid rgba(92, 57, 47, 0.3); background: repeating-linear-gradient(8deg, transparent 0 28px, rgba(123, 79, 50, 0.13) 29px 30px), repeating-linear-gradient(102deg, transparent 0 42px, rgba(123, 79, 50, 0.1) 43px 44px); clip-path: polygon(3% 8%, 92% 2%, 97% 88%, 8% 96%); }
+.map-title { position: absolute; top: 20px; left: 25px; right: 25px; color: #5d3c2e; text-align: center; font: 700 0.78rem/1.1 var(--font-heading); letter-spacing: 2px; }
+.map-title small { display: block; margin-top: 5px; font: 0.62rem var(--font-body); letter-spacing: 1px; }
+.map-compass { position: absolute; top: 17px; right: 20px; color: #70462f; font: 700 0.72rem var(--font-heading); text-align: center; }
+.map-compass span { display: block; font-size: 1.15rem; line-height: 0.8; }
+.map-route { position: absolute; height: 1px; border-top: 1px dashed rgba(104, 63, 40, 0.46); transform-origin: left center; pointer-events: none; }
+.map-route-one { width: 72%; left: 13%; top: 52%; transform: rotate(-10deg); }
+.map-route-two { width: 60%; left: 21%; top: 61%; transform: rotate(18deg); }
+.realm-pin { position: absolute; z-index: 2; }
+.realm-pin-button { display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 2px solid #fff0bd; border-radius: 50%; background: var(--clay-dark); color: #fff0bd; box-shadow: 0 4px 10px rgba(71, 42, 33, 0.35); cursor: pointer; }
+.realm-pin.is-locked .realm-pin-button { background: #746657; }
+.realm-pin-button:hover, .realm-pin:focus-within .realm-pin-button { background: var(--teal-dark); transform: scale(1.12); }
+.realm-pin-icon { font-size: 1.1rem; }
+.realm-popover { position: absolute; left: 50%; bottom: calc(100% + 12px); width: 220px; padding: 14px; border: 1px solid #d7a96f; border-radius: 8px; background: rgba(255, 242, 202, 0.98); color: var(--ink); box-shadow: 0 12px 24px rgba(71, 42, 33, 0.25); opacity: 0; pointer-events: none; transform: translate(-50%, 8px); transition: opacity 0.2s ease, transform 0.2s ease; }
+.realm-popover::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 12px; height: 12px; background: #fff2ca; border-right: 1px solid #d7a96f; border-bottom: 1px solid #d7a96f; transform: translateX(-50%) rotate(45deg); }
+.realm-pin:hover .realm-popover, .realm-pin:focus-within .realm-popover { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.realm-popover-period { display: block; color: var(--teal-dark); font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+.realm-popover strong { display: block; margin: 4px 0; color: var(--clay-dark); font: 1rem var(--font-heading); }
+.realm-popover p { margin: 0 0 10px; font-size: 0.75rem; line-height: 1.35; }
+.realm-popover-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.map-action { flex: 1 1 90px; padding: 7px 5px; border-radius: 4px; text-align: center; font-size: 0.68rem; font-weight: 700; }
+.map-action:hover { text-decoration: none; }
+.map-action-primary { background: var(--clay); color: var(--ink); }
+.map-action-secondary { background: var(--teal); color: var(--ink); }
+.realm-pin-indus_valley { left: 27%; top: 48%; }
+.realm-pin-ancient_kingdoms { left: 57%; top: 34%; }
+.realm-pin-trade_exploration { left: 75%; top: 58%; }
+.realm-pin-architecture_heritage { left: 46%; top: 69%; }
+.realm-pin-traditional_games { left: 17%; top: 73%; }
+.map-caption { position: absolute; right: 18px; bottom: 13px; left: 18px; display: flex; justify-content: space-between; color: #70462f; font-size: 0.58rem; letter-spacing: 1px; }
+.map-caption strong { font: 0.7rem var(--font-heading); letter-spacing: 2px; }
 .history-window { min-height: 390px; position: relative; transform: rotate(2deg); animation: float-window 6s ease-in-out infinite; }
 .history-image-main { height: 355px; overflow: hidden; border: 10px solid var(--gold-light); border-bottom-width: 42px; border-radius: 10px; box-shadow: 0 18px 30px rgba(101, 63, 66, 0.25); background: #c98b75; }
 .history-image-main img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) sepia(0.12); }
@@ -249,7 +281,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
   .hero { grid-template-columns: 1fr; padding: 46px 28px; gap: 28px; }
   .hero-copy { text-align: center; }
   .hero-kicker, .hero-buttons, .hero-stat-line { justify-content: center; }
-  .history-window { width: min(100%, 390px); margin: 0 auto; }
+  .realm-map { width: min(100%, 390px); margin: 0 auto; }
   .auth-page { grid-template-columns: minmax(280px, 390px); }
   .auth-art { min-height: 330px; width: min(100%, 390px); margin: 0 auto; }
   .auth-art-image { height: 270px; }
@@ -266,7 +298,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
   .hero { padding: 38px 18px; }
   .hero-desc br { display: none; }
   .hero-stat-line { flex-wrap: wrap; }
-  .history-window { min-height: 310px; }
+  .realm-map { min-height: 310px; }
   .history-image-main { height: 285px; }
   .auth-page { padding: 28px 4px 42px; gap: 20px; }
   .auth-art { min-height: 292px; }

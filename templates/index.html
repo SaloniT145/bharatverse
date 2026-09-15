@@ -17,14 +17,28 @@
     </div>
     <div class="hero-stat-line"><span>8 playable missions</span><span>•</span><span>1,000+ years of stories</span></div>
   </div>
-  <div class="history-window" aria-label="Historical view of the ancient city of Mohenjo-daro">
-    <div class="history-image history-image-main">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mohenjo-daro.jpg" alt="The ancient city of Mohenjo-daro" loading="eager">
+  <div class="realm-map" aria-label="Ancient map of BharatVerse realms">
+    <div class="map-compass" aria-hidden="true">N<span>✦</span></div>
+    <div class="map-title">THE TIME TRAVELER'S MAP<small>Five realms. One living history.</small></div>
+    <div class="map-route map-route-one" aria-hidden="true"></div>
+    <div class="map-route map-route-two" aria-hidden="true"></div>
+    {% for realm in realms %}
+    <div class="realm-pin realm-pin-{{ realm['key'] }} {{ 'is-active' if realm['status'] == 'active' else 'is-locked' }}">
+      <button class="realm-pin-button" type="button" aria-label="{{ realm['name'] }}">
+        <span class="realm-pin-icon">{{ realm['icon'] }}</span>
+      </button>
+      <div class="realm-popover">
+        <span class="realm-popover-period">{{ realm['period'] }}</span>
+        <strong>{{ realm['name'] }}</strong>
+        <p>{{ realm['description'] }}</p>
+        <div class="realm-popover-actions">
+          <a href="{{ url_for('auth.register') }}" class="map-action map-action-primary">Enter Time Machine</a>
+          <a href="{{ url_for('auth.login') }}" class="map-action map-action-secondary">Explore Realm</a>
+        </div>
+      </div>
     </div>
-    <div class="history-caption"><span class="caption-pin">✦</span><span><strong>Indus Valley</strong><small>Mohenjo-daro, c. 2500 BCE</small></span></div>
-    <span class="orbit-token token-one">𓂀</span>
-    <span class="orbit-token token-two">✦</span>
-    <span class="orbit-token token-three">𓆣</span>
+    {% endfor %}
+    <div class="map-caption"><span>c. 2600 BCE</span><strong>BHARATVERSE</strong><span>history in motion</span></div>
   </div>
 </section>
 
