@@ -19,6 +19,7 @@ from flask import Flask, render_template, session, redirect, url_for
 
 from config import Config
 from database.init_db import initialize_database, DB_PATH
+from models import models
 
 from routes.auth import auth_bp
 from routes.dashboard import dashboard_bp
@@ -52,7 +53,7 @@ def create_app():
     def index():
         if "user_id" in session:
             return redirect(url_for("dashboard.dashboard"))
-        return render_template("index.html")
+        return render_template("index.html", realms=models.get_all_realms())
 
     @app.errorhandler(404)
     def not_found(e):
