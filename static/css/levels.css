@@ -1,0 +1,233 @@
+.levels-page {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.levels-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.map-kicker {
+  margin: 0 0 6px;
+  color: var(--teal-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #6a4b2a;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.map-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-dot { width: 9px; height: 9px; display: inline-block; border-radius: 50%; }
+.legend-dot.completed { background: var(--success); }
+.legend-dot.unlocked { background: var(--gold-light); box-shadow: 0 0 8px var(--gold); }
+.legend-dot.locked { background: #8f8574; }
+
+.harappan-map {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #a8753e;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 52% 48%, transparent 0 28%, rgba(112, 69, 31, 0.11) 28.2% 28.5%, transparent 28.8%),
+    radial-gradient(circle at 18% 22%, rgba(255, 231, 169, 0.55) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 70%, rgba(112, 61, 25, 0.11) 0 1px, transparent 2px),
+    linear-gradient(115deg, rgba(117, 62, 29, 0.08) 25%, transparent 25% 50%, rgba(117, 62, 29, 0.06) 50% 75%, transparent 75%),
+    #d9b77a;
+  background-size: auto, 90px 90px, 70px 70px, 180px 180px, auto;
+  box-shadow: 0 16px 34px rgba(62, 35, 15, 0.18), inset 0 0 0 8px rgba(255, 228, 166, 0.2);
+  animation: map-arrival 0.8s ease both;
+}
+
+.harappan-map::before,
+.harappan-map::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border: 1px solid rgba(104, 61, 27, 0.22);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+.harappan-map::before { width: 72%; height: 56%; left: 15%; top: 20%; }
+.harappan-map::after { width: 80%; height: 42%; left: 8%; top: 30%; border-style: dashed; }
+
+.map-atmosphere { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.ancient-sun { position: absolute; top: 58px; right: 13%; width: 86px; height: 86px; border: 7px solid rgba(244, 193, 74, 0.28); border-radius: 50%; background: radial-gradient(circle, #ffd978 0 45%, rgba(239, 156, 55, 0.7) 46% 64%, transparent 65%); box-shadow: 0 0 45px rgba(243, 177, 63, 0.46); animation: sun-breathe 5s ease-in-out infinite; }
+.distant-mountains { position: absolute; top: 115px; left: -2%; width: 105%; height: 170px; opacity: 0.5; background: #a97648; clip-path: polygon(0 70%, 10% 48%, 18% 67%, 28% 28%, 39% 68%, 51% 38%, 60% 65%, 74% 20%, 87% 67%, 96% 42%, 100% 57%, 100% 100%, 0 100%); }
+.distant-mountains::after { position: absolute; inset: 13px 0 0; content: ''; background: rgba(102, 65, 41, 0.28); clip-path: polygon(0 75%, 12% 57%, 20% 73%, 31% 40%, 40% 75%, 53% 51%, 62% 73%, 75% 36%, 88% 74%, 100% 50%, 100% 100%, 0 100%); }
+.distant-mountains i { position: absolute; z-index: 1; width: 48px; height: 26px; border-top: 3px solid rgba(255, 231, 169, 0.5); transform: rotate(-25deg); }
+.distant-mountains i:nth-child(1) { left: 27%; top: 45px; }
+.distant-mountains i:nth-child(2) { left: 73%; top: 33px; }
+.distant-mountains i:nth-child(3) { left: 49%; top: 59px; }
+.distant-mountains i:nth-child(4) { left: 88%; top: 57px; }
+.terrain-dune { position: absolute; border-radius: 50%; background: rgba(235, 194, 120, 0.42); filter: blur(1px); }
+.dune-one { width: 45%; height: 110px; left: -8%; bottom: 6%; transform: rotate(-8deg); }
+.dune-two { width: 38%; height: 90px; right: -8%; bottom: 10%; transform: rotate(12deg); }
+.tree { position: absolute; z-index: 1; filter: drop-shadow(0 5px 3px rgba(71, 39, 18, 0.27)); font-size: 2.2rem; opacity: 0.82; animation: tree-sway 4s ease-in-out infinite; }
+.grove-one { left: 5%; bottom: 30%; }
+.grove-two { right: 28%; bottom: 24%; animation-delay: -1.3s; }
+.grove-three { right: 6%; top: 47%; font-size: 2.5rem; animation-delay: -2.1s; }
+.ruin { position: absolute; z-index: 1; color: rgba(105, 57, 27, 0.56); font-family: Georgia, serif; font-size: 5rem; line-height: 0.7; text-shadow: 4px 4px 0 rgba(115, 66, 29, 0.16); }
+.silhouette-one { left: 37%; top: 17%; }
+.silhouette-two { right: 10%; bottom: 17%; transform: scale(0.72); }
+.time-beacon { position: absolute; z-index: 1; right: 44%; bottom: 13%; color: rgba(255, 216, 111, 0.82); font-size: 2rem; text-shadow: 0 0 16px rgba(255, 207, 76, 0.9); animation: beacon-pulse 2.8s ease-in-out infinite; }
+.traveler-badge { position: absolute; z-index: 5; left: 22px; top: 20px; display: flex; align-items: center; gap: 7px; padding: 7px 12px; border: 1px solid rgba(82, 45, 19, 0.45); border-radius: 4px; background: rgba(70, 40, 20, 0.72); color: #ffe9b0; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; box-shadow: 0 4px 12px rgba(65, 34, 13, 0.2); }
+.traveler-badge span { color: var(--gold-light); font-size: 1rem; }
+.traveler-badge small { margin-left: 4px; color: #d8bc87; font-size: 0.55rem; letter-spacing: 0.05em; }
+
+.map-waterway {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.river-label { position: absolute; color: rgba(27, 93, 96, 0.8); font-size: 0.65rem; font-style: italic; font-weight: 800; letter-spacing: 0.12em; transform: rotate(-28deg); }
+.river-indus { left: 12%; bottom: 13%; }
+.river-ghaggar { left: 22%; top: 43%; transform: rotate(-48deg); }
+
+.map-route {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.map-route path { fill: none; }
+.map-route .river-main { stroke: rgba(39, 125, 132, 0.72); stroke-width: 18; }
+.map-route .river-branch { stroke: rgba(65, 145, 143, 0.58); stroke-width: 8; }
+.map-route .route-path { stroke: rgba(105, 54, 24, 0.68); stroke-width: 3; stroke-dasharray: 10 10; }
+.map-route .river-main, .map-route .river-branch { stroke-dasharray: 18 12; animation: river-flow 18s linear infinite; }
+.map-route .route-path { stroke-dashoffset: 800; animation: route-draw 2.8s ease 0.35s forwards, route-flow 20s linear 3.2s infinite; }
+.map-compass { position: absolute; top: 20px; right: 24px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(91, 49, 20, 0.5); border-radius: 50%; color: #6b351a; font-family: var(--font-heading); font-weight: 700; }
+
+.map-level { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 132px; text-align: center; }
+.map-pin { position: relative; display: grid; place-items: center; width: 58px; height: 58px; border: 4px solid rgba(255, 236, 179, 0.75); border-radius: 50% 50% 50% 4px; background: var(--sandstone); color: var(--ink); cursor: pointer; transform: rotate(-45deg); box-shadow: 0 6px 12px rgba(63, 35, 13, 0.3); transition: transform 0.2s, box-shadow 0.2s; }
+.map-pin:hover, .map-pin:focus-visible { transform: rotate(-45deg) scale(1.13); outline: none; box-shadow: 0 0 0 5px rgba(240, 193, 75, 0.27), 0 8px 18px rgba(63, 35, 13, 0.35); }
+.pin-icon, .pin-label { transform: rotate(45deg); }
+.pin-icon { font-size: 1.3rem; font-weight: 900; }
+.pin-label { position: absolute; bottom: 3px; font-size: 0.65rem; font-weight: 800; }
+.map-level.completed .map-pin { background: var(--success); color: #fff; }
+.map-level.unlocked .map-pin { background: var(--gold-light); color: var(--ink); animation: pin-glow 2.4s ease-in-out infinite; }
+.map-level.locked .map-pin { background: #958b78; color: #e9dfca; filter: grayscale(0.35); }
+.map-landmark { margin-top: -5px; color: #75451f; font-size: 1.45rem; line-height: 1; }
+.map-level-name { margin-top: 3px; color: #4e2c17; font-size: 0.78rem; font-weight: 800; line-height: 1.2; text-shadow: 0 1px rgba(255, 226, 167, 0.5); }
+
+.site-label { position: absolute; z-index: 1; display: flex; flex-direction: column; gap: 1px; color: #5b351c; font-size: 0.75rem; text-shadow: 0 1px rgba(255, 226, 167, 0.8); }
+.site-label strong { font-family: var(--font-heading); }
+.site-label small { padding-left: 19px; color: #7b5732; font-size: 0.62rem; }
+.site-harappa { left: 22%; top: 22%; }
+.site-mohenjo { left: 10%; top: 64%; }
+.site-dholavira { left: 55%; top: 68%; }
+.site-lothal { left: 70%; top: 78%; }
+
+.map-event { position: absolute; z-index: 3; display: flex; align-items: center; gap: 5px; border: 1px solid rgba(99, 52, 21, 0.42); border-radius: 16px; padding: 5px 9px; background: rgba(255, 231, 169, 0.86); color: #5b351c; cursor: pointer; font-size: 0.75rem; font-weight: 800; box-shadow: 0 3px 8px rgba(75, 42, 15, 0.15); transition: transform 0.2s, background 0.2s; }
+.map-event:hover, .map-event:focus-visible { background: #ffe7a9; transform: translateY(-3px); outline: 2px solid var(--gold); outline-offset: 2px; }
+.map-event span { white-space: nowrap; }
+.event-urban { left: 10%; top: 25%; }
+.event-mature { left: 43%; top: 20%; }
+.event-trade { left: 68%; top: 58%; }
+.event-late { right: 4%; top: 34%; }
+
+.map-image { position: absolute; z-index: 4; width: 148px; animation: image-float 5s ease-in-out infinite; }
+.image-seal { animation-delay: -1.8s; }
+.image-dholavira { animation-delay: -3.2s; }
+.image-card { display: block; width: 100%; padding: 0 0 7px; overflow: hidden; border: 3px solid rgba(255, 232, 178, 0.82); border-radius: 7px; background: #60371e; color: #ffe8b0; cursor: pointer; box-shadow: 0 8px 16px rgba(54, 28, 10, 0.26); text-align: left; transition: transform 0.25s, box-shadow 0.25s; }
+.image-card:hover, .image-card:focus-visible { transform: translateY(-5px) rotate(-1deg); outline: 2px solid var(--gold-light); outline-offset: 3px; box-shadow: 0 12px 24px rgba(54, 28, 10, 0.34); }
+.image-card img { display: block; width: 100%; height: 78px; object-fit: cover; background: linear-gradient(135deg, #9b6035, #d9b77a); }
+.image-card span { display: block; padding: 5px 7px 0; font-size: 0.65rem; font-weight: 800; line-height: 1.15; }
+.image-bath { left: 4%; top: 4%; }
+.image-seal { right: 18%; top: 4%; }
+.image-dholavira { right: 3%; bottom: 19%; }
+
+.level-1 { left: 5%; top: 68%; }
+.level-2 { left: 18%; top: 38%; }
+.level-3 { left: 31%; top: 52%; }
+.level-4 { left: 43%; top: 73%; }
+.level-5 { left: 55%; top: 34%; }
+.level-6 { left: 67%; top: 46%; }
+.level-7 { left: 77%; top: 68%; }
+.level-8 { left: 85%; top: 14%; }
+
+.map-date { position: absolute; z-index: 1; display: flex; flex-direction: column; gap: 1px; padding: 8px 11px; border-left: 3px solid var(--clay); background: rgba(255, 232, 178, 0.72); color: #5f351b; font-size: 0.72rem; box-shadow: 0 3px 8px rgba(75, 42, 15, 0.12); }
+.map-date strong { font-size: 0.78rem; }
+.date-early { left: 4%; top: 10%; }
+.date-mature { left: 40%; top: 8%; }
+.date-late { right: 6%; bottom: 8%; }
+.map-note { position: absolute; left: 50%; bottom: 22px; width: max-content; max-width: calc(100% - 32px); padding: 7px 14px; border-radius: 20px; background: rgba(67, 43, 22, 0.72); color: #ffe8b0; font-size: 0.78rem; transform: translateX(-50%); }
+
+@keyframes pin-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(240, 193, 75, 0.1), 0 6px 12px rgba(63, 35, 13, 0.3); } 50% { box-shadow: 0 0 0 9px rgba(240, 193, 75, 0.22), 0 8px 18px rgba(63, 35, 13, 0.36); } }
+@keyframes map-arrival { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: scale(1); } }
+@keyframes river-flow { to { stroke-dashoffset: -300; } }
+@keyframes route-draw { to { stroke-dashoffset: 0; } }
+@keyframes route-flow { to { stroke-dashoffset: -240; } }
+@keyframes image-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-6px) rotate(1deg); } }
+@keyframes sun-breathe { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.07); opacity: 1; } }
+@keyframes tree-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+@keyframes beacon-pulse { 0%, 100% { opacity: 0.4; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
+
+.level-modal { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; background: rgba(35, 20, 9, 0.65); }
+.level-modal[hidden] { display: none; }
+.level-modal-card { position: relative; width: min(460px, 100%); padding: 30px; border: 2px solid var(--gold); border-radius: var(--radius); background: var(--sandstone-light); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); }
+.level-modal-close { position: absolute; top: 10px; right: 14px; border: 0; background: none; color: var(--ink); font-size: 1.6rem; cursor: pointer; }
+.modal-level { color: var(--teal-dark); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; }
+.modal-date { color: var(--clay-dark); font-weight: 700; }
+.modal-status { display: inline-block; margin: 8px 0; padding: 4px 10px; border-radius: 14px; background: var(--gold); font-size: 0.75rem; font-weight: 800; }
+
+@media (max-width: 760px) {
+  .levels-heading { align-items: flex-start; flex-direction: column; }
+  .harappan-map { min-height: 820px; }
+  .map-level { width: 108px; }
+  .level-1 { left: 2%; top: 74%; }
+  .level-2 { left: 22%; top: 50%; }
+  .level-3 { left: 43%; top: 62%; }
+  .level-4 { left: 62%; top: 74%; }
+  .level-5 { left: 35%; top: 30%; }
+  .level-6 { left: 58%; top: 40%; }
+  .level-7 { left: 76%; top: 54%; }
+  .level-8 { left: 68%; top: 13%; }
+  .date-mature { left: 38%; top: 7%; }
+  .site-harappa { left: 18%; top: 22%; }
+  .site-mohenjo { left: 5%; top: 65%; }
+  .site-dholavira { left: 48%; top: 70%; }
+  .site-lothal { left: 68%; top: 79%; }
+  .event-urban { left: 4%; top: 31%; }
+  .event-mature { left: 37%; top: 19%; }
+  .event-trade { left: 61%; top: 59%; }
+  .event-late { right: 3%; top: 35%; }
+  .map-image { width: 118px; }
+  .image-card img { height: 62px; }
+  .image-bath { left: 3%; top: 4%; }
+  .image-seal { right: 3%; top: 4%; }
+  .image-dholavira { right: 3%; bottom: 18%; }
+  .traveler-badge { left: 12px; top: 14px; max-width: 190px; flex-wrap: wrap; line-height: 1.1; }
+  .traveler-badge small { width: 100%; margin-left: 21px; }
+  .ancient-sun { right: 8%; width: 64px; height: 64px; }
+  .distant-mountains { top: 100px; height: 140px; }
+  .tree { font-size: 1.7rem; }
+  .grove-one { left: 2%; bottom: 28%; }
+  .grove-two { right: 27%; bottom: 20%; }
+  .grove-three { right: 4%; top: 48%; }
+  .ruin { font-size: 3.5rem; }
+  .silhouette-one { left: 32%; top: 20%; }
+  .silhouette-two { right: 5%; bottom: 20%; }
+  .map-note { bottom: 16px; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .harappan-map, .map-route .river-main, .map-route .river-branch, .map-route .route-path, .map-image, .ancient-sun, .tree, .time-beacon { animation: none; }
+  .map-level.unlocked .map-pin { animation: none; }
+}
