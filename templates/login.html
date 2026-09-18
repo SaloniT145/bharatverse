@@ -24,6 +24,15 @@
 
       <button type="submit" class="btn btn-primary btn-full">Login</button>
     </form>
+    <div class="demo-login-box">
+      <span class="demo-login-label">Classroom demo</span>
+      <p>Try the student journey with a ready-made account.</p>
+      <button type="submit" form="studentDemoForm" class="btn btn-secondary btn-full">🎒 Try Student Demo</button>
+      <form method="POST" action="{{ url_for('auth.login') }}" id="studentDemoForm">
+        <input type="hidden" name="demo_login" value="student">
+      </form>
+      <small>Demo username: Student Demo · Password: student123</small>
+    </div>
     <p class="auth-switch">New here? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
   </div>
 </section>

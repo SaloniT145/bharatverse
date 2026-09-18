@@ -18,7 +18,7 @@ import os
 from flask import Flask, render_template, session, redirect, url_for
 
 from config import Config
-from database.init_db import initialize_database, DB_PATH
+from database.init_db import initialize_database, ensure_student_demo_account, DB_PATH
 from models import models
 
 from routes.auth import auth_bp
@@ -39,6 +39,7 @@ def create_app():
     # inserts data that doesn't already exist (uses INSERT OR IGNORE).
     if not os.path.exists(DB_PATH):
         initialize_database()
+    ensure_student_demo_account()
 
     # Register all route groups (blueprints)
     app.register_blueprint(auth_bp)

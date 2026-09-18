@@ -13,6 +13,7 @@
   position: relative;
   overflow: hidden;
 }
+.tm-console { border-width: 3px; animation: child-arrive 0.65s ease both; }
 
 .tm-title { color: var(--gold-light); letter-spacing: 2px; font-size: 1.6rem; }
 .tm-status { color: var(--teal-dark); letter-spacing: 3px; font-weight: bold; margin-bottom: 30px; animation: blink 1.6s infinite; }
@@ -27,6 +28,7 @@
 .tm-period { color: var(--teal-dark); font-size: 0.85rem; }
 
 .tm-button { width: 100%; letter-spacing: 1px; }
+.tm-button { min-height: 52px; }
 
 .tm-loading { margin-top: 24px; }
 .tm-spinner {

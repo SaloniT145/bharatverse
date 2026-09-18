@@ -1,6 +1,7 @@
 /* ---------- Game challenge screen ---------- */
 .game-header { text-align: center; margin-bottom: 20px; }
 .level-badge { background: rgba(138, 183, 165, 0.78); color: var(--ink); padding: 4px 14px; border-radius: 14px; font-size: 0.8rem; font-weight: bold; }
+.level-badge { display: inline-block; border: 2px solid var(--teal-dark); animation: pin-pulse 2.4s ease-in-out infinite; }
 .game-scenario-title { color: var(--teal-dark); font-weight: 600; font-size: 1.1rem; }
 
 .stats-strip { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
@@ -8,6 +9,7 @@
 .stat-chip.highlight { background: var(--gold); border-color: var(--gold); }
 
 .scenario-box { background: rgba(249, 223, 181, 0.76); border-left: 4px solid var(--clay); border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+.scenario-box { border: 2px solid var(--gold); border-left-width: 8px; box-shadow: var(--shadow); }
 .resources-line { font-size: 0.9rem; color: #66515a; margin-top: 10px; }
 .already-completed-notice { background: #e2f3e5; padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; }
 
@@ -16,6 +18,7 @@
 .choice-card:hover { transform: translateY(-2px); border-color: var(--gold); }
 .choice-card input { margin-top: 4px; }
 .choice-card:has(input:checked) { border-color: var(--clay); background: var(--sandstone-light); }
+.choice-card:has(input:checked) { box-shadow: 0 0 0 5px rgba(227, 111, 85, 0.16), var(--shadow); }
 
 /* ---------- Result screen ---------- */
 .result-screen { text-align: center; }

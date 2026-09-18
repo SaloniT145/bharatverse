@@ -277,6 +277,28 @@ def seed_demo_leaderboard(conn):
     conn.commit()
 
 
+def ensure_student_demo_account():
+    """Ensure the login-page student demo account exists on every app start."""
+    from werkzeug.security import generate_password_hash
+
+    conn = get_connection()
+    username = "Student Demo"
+    email = "student_demo@example.com"
+    existing = conn.execute("SELECT id FROM users WHERE username = ?", (username,)).fetchone()
+    if not existing:
+        cur = conn.execute(
+            "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
+            (username, email, generate_password_hash("student123"))
+        )
+        conn.execute(
+            "INSERT INTO player_stats (user_id, water, food, settlement, infrastructure, wellbeing, knowledge_xp) "
+            "VALUES (?, 50, 50, 50, 50, 50, 0)",
+            (cur.lastrowid,)
+        )
+        conn.commit()
+    conn.close()
+
+
 def initialize_database():
     fresh = not os.path.exists(DB_PATH)
     conn = get_connection()
