@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="page-shell">
 
 <nav class="navbar">
   <a href="{{ url_for('index') }}" class="brand">
@@ -15,7 +15,7 @@
     <span class="brand-text"><strong>BHARAT</strong><em>VERSE</em><small>HISTORY IN MOTION</small></span>
   </a>
 
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
   <div class="nav-links" id="navLinks">
     {% if session.get('user_id') %}

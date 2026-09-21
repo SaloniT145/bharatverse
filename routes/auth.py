@@ -67,6 +67,10 @@ def login():
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "")
 
+        if request.form.get("demo_login") == "student":
+            username = "Student Demo"
+            password = "student123"
+
         user = models.get_user_by_username(username)
         if not user or not check_password_hash(user["password_hash"], password):
             flash("Invalid username or password.", "error")

@@ -1,14 +1,29 @@
 // main.js - shared behavior across all BharatVerse pages
 
 document.addEventListener("DOMContentLoaded", function () {
+  document.body.classList.add("page-ready");
+
   // ----- Mobile nav toggle -----
   const toggle = document.getElementById("navToggle");
   const links = document.getElementById("navLinks");
   if (toggle && links) {
     toggle.addEventListener("click", function () {
       links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", links.classList.contains("open") ? "true" : "false");
     });
   }
+
+  // ----- Touch-friendly realm map popovers -----
+  const realmPins = document.querySelectorAll(".realm-pin");
+  realmPins.forEach(function (pin) {
+    const button = pin.querySelector(".realm-pin-button");
+    if (!button) return;
+    button.setAttribute("aria-expanded", "false");
+    button.addEventListener("click", function () {
+      const isOpen = pin.classList.toggle("is-open");
+      button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
 
   // ----- Animated number counters -----
   // Any element with data-count="123" will count up from 0 to 123.
