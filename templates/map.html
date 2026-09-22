@@ -7,18 +7,32 @@
   <h1 class="page-title">🗺️ Civilization Map</h1>
   <p class="page-subtitle">{{ realm['name'] }} &middot; Click a marker to learn about a real archaeological site.</p>
 
-  <div class="map-container">
-    <svg viewBox="0 0 100 100" class="map-svg" id="mapSvg">
-      <rect x="0" y="0" width="100" height="100" fill="var(--map-bg, #f0e6d2)" rx="2"/>
-      {% for site in sites %}
-      <g class="map-marker" data-name="{{ site['name'] }}" data-region="{{ site['region'] }}"
-         data-importance="{{ site['importance'] }}" data-fact="{{ site['fact'] }}"
-         transform="translate({{ site['x'] }},{{ site['y'] }})">
-        <circle r="2.5" class="marker-dot"></circle>
-        <text x="0" y="-3.5" class="marker-label">{{ site['name'] }}</text>
-      </g>
-      {% endfor %}
-    </svg>
+  <div class="map-layout">
+    <aside class="map-legend" aria-label="Map key">
+      <h2>Map key</h2>
+      <div class="legend-item">
+        <span class="legend-symbol legend-site" aria-hidden="true"></span>
+        <span><strong>Archaeological site</strong><small>Click a marker to explore</small></span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-symbol legend-label" aria-hidden="true">Aa</span>
+        <span><strong>Site name</strong><small>Identifies the marker</small></span>
+      </div>
+    </aside>
+
+    <div class="map-container">
+      <svg viewBox="0 0 100 100" class="map-svg" id="mapSvg" role="img" aria-label="Archaeological sites map">
+        <rect x="0" y="0" width="100" height="100" fill="var(--map-bg, #f0e6d2)" rx="2"/>
+        {% for site in sites %}
+        <g class="map-marker" data-name="{{ site['name'] }}" data-region="{{ site['region'] }}"
+           data-importance="{{ site['importance'] }}" data-fact="{{ site['fact'] }}"
+           transform="translate({{ site['x'] }},{{ site['y'] }})">
+          <circle r="2.5" class="marker-dot"></circle>
+          <text x="0" y="-3.5" class="marker-label">{{ site['name'] }}</text>
+        </g>
+        {% endfor %}
+      </svg>
+    </div>
   </div>
 
   <div class="site-panel" id="sitePanel" hidden>
