@@ -7,18 +7,21 @@
   <p class="page-subtitle">Entries marked (Demo) are sample data. Real scores come from actual gameplay.</p>
 
   {% if leaderboard|length >= 3 %}
-  <div class="podium">
+  <div class="podium" aria-label="Top three contestants">
     <div class="podium-place second">
+      <span class="podium-medal" aria-hidden="true">2nd</span>
       <span class="podium-rank">2</span>
       <span class="podium-name">{{ leaderboard[1]['username'] }}</span>
       <span class="podium-xp">{{ leaderboard[1]['xp'] }} XP</span>
     </div>
     <div class="podium-place first">
+      <span class="podium-medal" aria-hidden="true">1st</span>
       <span class="podium-rank">1</span>
       <span class="podium-name">{{ leaderboard[0]['username'] }}</span>
       <span class="podium-xp">{{ leaderboard[0]['xp'] }} XP</span>
     </div>
     <div class="podium-place third">
+      <span class="podium-medal" aria-hidden="true">3rd</span>
       <span class="podium-rank">3</span>
       <span class="podium-name">{{ leaderboard[2]['username'] }}</span>
       <span class="podium-xp">{{ leaderboard[2]['xp'] }} XP</span>
@@ -26,14 +29,15 @@
   </div>
   {% endif %}
 
+  <div class="leaderboard-table-wrap">
   <table class="leaderboard-table">
     <thead>
       <tr><th>Rank</th><th>Player</th><th>Knowledge XP</th><th>Civilization Score</th><th>Achievements</th></tr>
     </thead>
     <tbody>
       {% for entry in leaderboard %}
-      <tr>
-        <td>#{{ loop.index }}</td>
+      <tr class="leaderboard-row rank-{{ loop.index }}">
+        <td><span class="rank-badge">{{ loop.index }}</span>{% if loop.index <= 3 %}<span class="rank-label">{{ ['1st', '2nd', '3rd'][loop.index - 1] }}</span>{% endif %}</td>
         <td>{{ entry['username'] }} {% if entry['is_demo'] %}<span class="demo-tag">DEMO</span>{% endif %}</td>
         <td>{{ entry['xp'] }}</td>
         <td>{{ entry['score'] }}</td>
@@ -42,5 +46,6 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
 </section>
 {% endblock %}
