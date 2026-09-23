@@ -5,7 +5,7 @@
 {% block content %}
 <section class="profile-dashboard">
   <aside class="profile-sidebar" aria-label="Profile navigation">
-    <a class="profile-brand" href="{{ url_for('index') }}"><span class="profile-brand-mark">✥</span><span><strong>Bharat</strong><em>Verse</em><small>EXPLORE THROUGH TIME</small></span></a>
+    <a class="profile-brand" href="{{ url_for('index') }}"><img class="profile-brand-logo" src="{{ url_for('brand_logo') }}" alt="BharatVerse logo"><span><strong>Bharat</strong><em>Verse</em><small>EXPLORE THROUGH TIME</small></span></a>
     <nav class="profile-nav">
       <a href="{{ url_for('dashboard.dashboard') }}"><span>⌂</span>Home</a>
       <a href="{{ url_for('realms.realm_selection') }}"><span>⌕</span>Explore</a>

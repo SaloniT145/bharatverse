@@ -73,6 +73,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
   z-index: 100;
 }
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); color: #fffaf0; font-weight: bold; }
+.brand-logo { display: block; width: 39px; height: 39px; border: 2px solid var(--gold-light); border-radius: 50%; object-fit: cover; background: var(--teal-dark); }
 .brand:hover { text-decoration: none; }
 .brand-seal { display: grid; place-items: center; width: 39px; height: 39px; border: 2px solid var(--gold-light); border-radius: 50%; color: var(--gold-light); background: rgba(70, 115, 109, 0.6); transform: rotate(-8deg); }
 .brand-seal span { font-size: 1.35rem; transform: rotate(8deg); }
@@ -361,7 +362,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
 .profile-sidebar { display: flex; min-height: 100vh; flex-direction: column; padding: 20px 12px; background: linear-gradient(180deg, #073e42, #062e35 68%, #0a4b4e); color: #e9e4c9; }
 .profile-brand { display: flex; align-items: center; gap: 9px; margin: 0 7px 40px; color: #f6e9bb; text-decoration: none; }
 .profile-brand:hover { text-decoration: none; }
-.profile-brand-mark { color: #d99b34; font-size: 2rem; line-height: 1; }
+.profile-brand-logo { display: block; width: 42px; height: 42px; border: 2px solid #d99b34; border-radius: 50%; object-fit: cover; background: #073e42; }
 .profile-brand strong, .profile-brand em { display: block; font: 700 1.05rem/0.9 Georgia, serif; }
 .profile-brand em { color: #f4d783; font-style: normal; }
 .profile-brand small { display: block; margin-top: 7px; color: #b6c9b8; font-size: 0.43rem; letter-spacing: 0.07em; white-space: nowrap; }
