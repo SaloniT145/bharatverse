@@ -6,7 +6,6 @@
 <section class="levels-page">
   <div class="levels-heading">
     <div>
-      <p class="map-kicker">THE HARAPPAN EXPEDITION</p>
       <h1 class="page-title">{{ realm['icon'] }} {{ realm['name'] }}</h1>
       <p class="page-subtitle">{{ realm['period'] }} · Choose your next civic milestone</p>
     </div>
@@ -14,6 +13,12 @@
       <span><i class="legend-dot completed"></i>Completed</span>
       <span><i class="legend-dot unlocked"></i>Available</span>
       <span><i class="legend-dot locked"></i>Locked</span>
+    </div>
+    <div class="symbol-legend" aria-label="Level symbol meanings">
+      <strong>Level symbols</strong>
+      <span><b>✦</b> Completed</span>
+      <span><b>◆</b> Available</span>
+      <span><b>🔒</b> Locked</span>
     </div>
   </div>
 
@@ -28,48 +33,12 @@
   {% endif %}
 
   <div class="harappan-map" aria-label="Interactive Harappan civilization level map">
+    <img class="harappan-map-image" src="{{ url_for('static', filename='images/WhatsApp Image 2026-09-22 at 10.06.37 PM.jpeg') }}" alt="3D isometric reconstruction of a Harappan city" loading="eager">
     <div class="map-compass" aria-hidden="true">N</div>
-    <div class="map-waterway" aria-hidden="true">
-      <span class="river-label river-indus">INDUS RIVER</span>
-      <span class="river-label river-ghaggar">GHAGGAR-HAKRA</span>
-    </div>
-    <div class="map-atmosphere" aria-hidden="true">
-      <div class="ancient-sun"></div>
-      <div class="distant-mountains"><i></i><i></i><i></i><i></i></div>
-      <div class="terrain-dune dune-one"></div>
-      <div class="terrain-dune dune-two"></div>
-      <div class="tree grove-one">🌴</div>
-      <div class="tree grove-two">🌴</div>
-      <div class="tree grove-three">🌳</div>
-      <div class="ruin silhouette-one">▥</div>
-      <div class="ruin silhouette-two">▥</div>
-      <div class="time-beacon">✦</div>
-    </div>
     <div class="traveler-badge"><span>✧</span> TIME TRAVELER'S FIELD MAP <small>INDUS VALLEY · ARCHIVE 01</small></div>
     <svg class="map-route" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
-      <path class="river-main" d="M118 485 C145 405 124 325 190 270 S290 170 350 135 S465 95 545 116 S648 208 716 228 S805 185 876 64" />
-      <path class="river-branch" d="M335 138 C300 203 304 274 248 342" />
-      <path class="river-branch" d="M542 116 C585 174 598 230 661 295" />
-      <path class="route-path" d="M95 390 C170 300 205 210 285 245 S380 400 465 330 S565 170 655 220 S760 390 895 125" />
+      <path class="route-path" d="M106 350 C160 350 200 210 246 210 S340 325 386 325 S480 190 526 190 S610 310 656 310 S720 175 766 175 S812 300 856 300 S895 125 916 125" />
     </svg>
-    <div class="map-image image-bath">
-      <button type="button" class="image-card" data-level="Archaeological site" data-title="The Great Bath of Mohenjo-daro" data-status="Harappan architecture" data-date="c. 2500 BCE" data-description="The Great Bath is one of the best-known structures at Mohenjo-daro, showing the importance of water, brick engineering and public spaces in Mature Harappan cities.">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Great%20Bath%20Mohenjo-daro.jpg" alt="The Great Bath at Mohenjo-daro" loading="lazy">
-        <span>Great Bath · Mohenjo-daro</span>
-      </button>
-    </div>
-    <div class="map-image image-seal">
-      <button type="button" class="image-card" data-level="Archaeological object" data-title="The Pashupati seal" data-status="Harappan iconography" data-date="c. 2500–1900 BCE" data-description="Stamp seals were used across the Indus world. Their animals, symbols and motifs offer clues about identity, trade and belief, although the script remains undeciphered.">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pashupati%20seal.jpg" alt="Indus Valley Pashupati seal" loading="lazy">
-        <span>Seal &amp; script</span>
-      </button>
-    </div>
-    <div class="map-image image-dholavira">
-      <button type="button" class="image-card" data-level="Archaeological site" data-title="Dholavira's water systems" data-status="Harappan engineering" data-date="c. 2600–1900 BCE" data-description="Dholavira in Gujarat is known for reservoirs, channels and carefully planned civic spaces adapted to a dry landscape.">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dholavira%20ruins.jpg" alt="Ruins and reservoirs at Dholavira" loading="lazy">
-        <span>Dholavira · reservoirs</span>
-      </button>
-    </div>
     {% for item in journey %}
     {% set date_label = 'Early Harappan · c. 3300 BCE' if item['level']['level_number'] <= 2 else ('Mature Harappan · c. 2600–1900 BCE' if item['level']['level_number'] <= 6 else 'Late Harappan · c. 1900–1300 BCE') %}
     <article class="map-level {{ item['status'] }} level-{{ item['level']['level_number'] }}">
@@ -81,24 +50,26 @@
               data-date="{{ date_label }}"
               data-description="{{ item['level']['description'] }}"
               data-action-url="{% if item['status'] == 'completed' %}{{ url_for('game.historical_record', level_id=item['level']['id']) }}{% elif item['status'] == 'unlocked' %}{{ url_for('game.play_level', level_id=item['level']['id']) }}{% endif %}">
-        <span class="pin-icon">{% if item['status'] == 'completed' %}✓{% elif item['status'] == 'unlocked' %}✦{% else %}⌁{% endif %}</span>
+              <img class="level-marker-image" src="{{ url_for('static', filename='images/Screenshot 2026-09-22 224857.png') }}" alt="" aria-hidden="true">
+              <span class="pin-icon">
+                {% if item['status'] == 'completed' %}✓
+                {% elif item['status'] == 'unlocked' %}◆
+                {% else %}🔒{% endif %}
+              </span>
         <span class="pin-label">{{ item['level']['level_number'] }}</span>
       </button>
-      <div class="map-landmark" aria-hidden="true">{% if item['level']['level_number'] in [1, 5] %}🏛{% elif item['level']['level_number'] in [3, 6] %}💧{% elif item['level']['level_number'] == 7 %}⚖{% else %}▦{% endif %}</div>
-      <span class="map-level-name">{{ item['level']['title'] }}</span>
+      <div class="level-card">
+        <strong>{{ item['level']['title'] }}</strong>
+        {% if item['status'] != 'completed' %}
+        <span>
+          {% if item['status'] == 'unlocked' %}Available
+          {% else %}Locked{% endif %}
+        </span>
+        {% endif %}
+      </div>
     </article>
     {% endfor %}
-    <div class="site-label site-harappa">🏛 <strong>Harappa</strong><small>Punjab</small></div>
     <div class="site-label site-mohenjo">🏛 <strong>Mohenjo-daro</strong><small>Lower Indus</small></div>
-    <div class="site-label site-dholavira">▣ <strong>Dholavira</strong><small>Reservoirs</small></div>
-    <div class="site-label site-lothal">⚓ <strong>Lothal</strong><small>Trade port</small></div>
-    <button class="map-event event-urban" type="button" data-level="Key historical event" data-title="The first cities emerge" data-status="Historical milestone" data-date="c. 3300 BCE · Early Harappan" data-description="Early farming communities grow into planned settlements across the Indus region. Click level landmarks to guide your own settlement.">🌾<span>Urban roots</span></button>
-    <button class="map-event event-mature" type="button" data-level="Key historical event" data-title="The Mature Harappan network" data-status="Historical milestone" data-date="c. 2600–1900 BCE" data-description="Harappa, Mohenjo-daro, Dholavira and other cities share urban planning, craft traditions, weights and long-distance trade.">✦<span>City network</span></button>
-    <button class="map-event event-trade" type="button" data-level="Key historical event" data-title="Trade across the Arabian Sea" data-status="Historical milestone" data-date="c. 2500–1900 BCE" data-description="Standardized weights, seals and port settlements such as Lothal point to organized trade with distant regions, including Mesopotamia.">⚓<span>Trade routes</span></button>
-    <button class="map-event event-late" type="button" data-level="Key historical event" data-title="The Late Harappan transition" data-status="Historical milestone" data-date="c. 1900–1300 BCE" data-description="Urban centers change and populations disperse into new regional traditions. The causes were complex and remain an active area of research.">◌<span>Transition</span></button>
-    <div class="map-date date-early"><strong>c. 3300 BCE</strong><span>Early Harappan</span></div>
-    <div class="map-date date-mature"><strong>c. 2600–1900 BCE</strong><span>Mature Harappan</span></div>
-    <div class="map-date date-late"><strong>c. 1900–1300 BCE</strong><span>Late Harappan</span></div>
     <div class="map-note">Follow the river · tap a pin, event, or image to explore the civilization.</div>
   </div>
 </section>
