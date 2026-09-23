@@ -23,11 +23,12 @@ import sqlite3
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-# Vercel's filesystem is read-only except /tmp
-if os.environ.get("VERCEL"):
-    DB_PATH = "/tmp/bharatverse.db"
-else:
-    DB_PATH = os.path.join(BASE_DIR, "database", "bharatverse.db")
+# Vercel's filesystem is read-only except /tmp. DATABASE_PATH can override
+# this for local testing or a mounted persistent volume.
+DB_PATH = os.environ.get(
+    "DATABASE_PATH",
+    "/tmp/bharatverse.db" if os.environ.get("VERCEL") else os.path.join(BASE_DIR, "database", "bharatverse.db"),
+)
 
 
 SCHEMA = """
